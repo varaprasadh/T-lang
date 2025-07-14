@@ -71,16 +71,44 @@ build_target() {
     echo -e "${BLUE}Building for $name ($target)...${NC}"
     
     if [[ "$target" == *"linux"* ]]; then
-        # Use cross for Linux targets with fallback
-        echo -e "${YELLOW}Attempting Linux cross-compilation...${NC}"
-        if cross build --release --target "$target" 2>/dev/null; then
-            echo -e "${GREEN}Cross-compilation successful!${NC}"
+        # Determine if using musl or gnu
+        local cc_var=""
+        if [[ "$target" == *"musl"* ]]; then
+            cc_var="x86_64-linux-musl-gcc"
+            if [[ "$target" == *"aarch64"* ]]; then
+                cc_var="aarch64-linux-musl-gcc"
+            fi
         else
-            echo -e "${YELLOW}Cross-compilation failed, trying with zig...${NC}"
+            cc_var="x86_64-unknown-linux-gnu-gcc"
+            if [[ "$target" == *"aarch64"* ]]; then
+                cc_var="aarch64-unknown-linux-gnu-gcc"
+            fi
+        fi
+        
+        # Check if linker is installed
+        if ! command -v "$cc_var" &> /dev/null; then
+            echo -e "${YELLOW}Linux cross-compilation tools not found.${NC}"
+            echo -e "${YELLOW}Run ./setup-linux-cross-compile.sh to install them.${NC}"
+            echo -e "${YELLOW}Trying with zig as fallback...${NC}"
+            
             if command -v cargo-zigbuild &> /dev/null; then
-                cargo zigbuild --release --target "$target"
+                if cargo zigbuild --release --target "$target"; then
+                    echo -e "${GREEN}Linux build successful with zig!${NC}"
+                else
+                    echo -e "${RED}Failed to build for $target. Skipping...${NC}"
+                    return 1
+                fi
             else
-                echo -e "${RED}Failed to build for $target. Skipping...${NC}"
+                echo -e "${RED}No suitable Linux cross-compilation tool found.${NC}"
+                return 1
+            fi
+        else
+            # Build with proper TARGET_CC
+            echo -e "${YELLOW}Building Linux target with $cc_var...${NC}"
+            if TARGET_CC="$cc_var" cargo build --release --target "$target"; then
+                echo -e "${GREEN}Linux build successful!${NC}"
+            else
+                echo -e "${RED}Linux build failed for $target.${NC}"
                 return 1
             fi
         fi
@@ -97,13 +125,19 @@ build_target() {
     local dist_path="$BUILD_DIR/$dist_name"
     mkdir -p "$dist_path"
     
+    # Check if binary was actually built
+    if [ ! -f "target/$target/release/$binary" ]; then
+        echo -e "${RED}Binary not found for $target. Build may have failed.${NC}"
+        return 1
+    fi
+    
     # Copy binary
     cp "target/$target/release/$binary" "$dist_path/"
     
     # Copy examples and docs
     cp -r examples "$dist_path/"
     cp README.md "$dist_path/"
-    cp INSTALLATION.md "$dist_path/"
+    cp INSTALLATION.md "$dist_path/" 2>/dev/null || true
     
     # Create archive
     echo -e "${YELLOW}Creating archive for $name...${NC}"
