@@ -1,0 +1,5 @@
+feefbcca543f9fb7f432b36ee921f5d77b9ea6611f2e71a5c9267cbc0ffdefcb  telugu-lang-linux-arm64.tar.gz
+fb6475bc57e99223bbe7c26006035c6a58e73ed0f5d1387a7e8c769e6983a78b  telugu-lang-linux-x64.tar.gz
+96f151f317c3b9d264ebed6c7bb456fb3d543020bc90d6c46e69f75b87ea762c  telugu-lang-macos-arm64.tar.gz
+a5526c55c000d7e22e0c72d538224b7df13b64503a2be7f8df3cfca1a3332303  telugu-lang-macos-x64.tar.gz
+f93d09acd39ba2617bc4df2ce238e8eef46ec1127a3244619053ab3175fd0a2f  telugu-lang-windows-x64.zip

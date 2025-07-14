@@ -1,0 +1,132 @@
+// Boolean Logic Operations - Telugu Language
+// Demonstrates mariyu (AND), leda (OR), and kadu (NOT) operations
+
+cheppu "Boolean Logic Operations";
+cheppu "========================";
+
+cheppu "Truth Table for mariyu (AND):";
+cheppu "=============================";
+
+// AND truth table
+sankhya tt = nijam mariyu nijam;
+sankhya tf = nijam mariyu abaddham;
+sankhya ft = abaddham mariyu nijam;
+sankhya ff = abaddham mariyu abaddham;
+
+cheppu "nijam mariyu nijam = " + tt;     // nijam
+cheppu "nijam mariyu abaddham = " + tf;  // abaddham
+cheppu "abaddham mariyu nijam = " + ft;  // abaddham
+cheppu "abaddham mariyu abaddham = " + ff; // abaddham
+
+cheppu "";
+cheppu "Truth Table for leda (OR):";
+cheppu "==========================";
+
+// OR truth table
+sankhya tt_or = nijam leda nijam;
+sankhya tf_or = nijam leda abaddham;
+sankhya ft_or = abaddham leda nijam;
+sankhya ff_or = abaddham leda abaddham;
+
+cheppu "nijam leda nijam = " + tt_or;     // nijam
+cheppu "nijam leda abaddham = " + tf_or;  // nijam
+cheppu "abaddham leda nijam = " + ft_or;  // nijam
+cheppu "abaddham leda abaddham = " + ff_or; // abaddham
+
+cheppu "";
+cheppu "kadu (NOT) Operation:";
+cheppu "====================";
+
+// NOT operation
+sankhya not_true = kadu nijam;
+sankhya not_false = kadu abaddham;
+
+cheppu "kadu nijam = " + not_true;      // abaddham
+cheppu "kadu abaddham = " + not_false;  // nijam
+
+cheppu "";
+cheppu "Complex Boolean Expressions:";
+cheppu "============================";
+
+sankhya a = nijam;
+sankhya b = abaddham;
+sankhya c = nijam;
+
+// Complex expressions
+sankhya expr1 = a mariyu b leda c;
+sankhya expr2 = a leda b mariyu c;
+sankhya expr3 = kadu a leda b;
+sankhya expr4 = kadu (a mariyu b);
+
+cheppu "a = " + a + ", b = " + b + ", c = " + c;
+cheppu "";
+cheppu "a mariyu b leda c = " + expr1;    // nijam (false AND false OR true = true)
+cheppu "a leda b mariyu c = " + expr2;    // nijam (true OR false AND true = true)
+cheppu "kadu a leda b = " + expr3;        // abaddham (NOT true OR false = false)
+cheppu "kadu (a mariyu b) = " + expr4;    // nijam (NOT (true AND false) = true)
+
+cheppu "";
+cheppu "Practical Boolean Logic:";
+cheppu "========================";
+
+sankhya age = 25;
+sankhya hasLicense = nijam;
+sankhya hasInsurance = abaddham;
+
+// Age check
+sankhya isAdult = age >= 18;
+cheppu "Age " + age + " >= 18: " + isAdult;
+
+// Driving eligibility
+sankhya canDrive = isAdult mariyu hasLicense;
+cheppu "Can drive (adult AND has license): " + canDrive;
+
+// Full driving eligibility
+sankhya fullyEligible = canDrive mariyu hasInsurance;
+cheppu "Fully eligible (can drive AND has insurance): " + fullyEligible;
+
+// Alternative eligibility (special case)
+sankhya specialCase = age >= 16 mariyu hasLicense mariyu hasInsurance;
+cheppu "Special case (16+ AND license AND insurance): " + specialCase;
+
+cheppu "";
+cheppu "Short-Circuit Evaluation:";
+cheppu "=========================";
+
+// Demonstrate short-circuit behavior with conditions
+ayite (nijam leda nijam) {
+    cheppu "✓ TRUE OR TRUE evaluates to true";
+}
+
+ayite (abaddham mariyu nijam) {
+    cheppu "This won't print";
+} lekapothe {
+    cheppu "✓ FALSE AND TRUE evaluates to false";
+}
+
+ayite (nijam leda abaddham) {
+    cheppu "✓ TRUE OR FALSE evaluates to true";
+}
+
+cheppu "";
+cheppu "Boolean Array Example:";
+cheppu "======================";
+
+// Array of boolean values
+sankhya boolArray = [nijam, abaddham, nijam, abaddham];
+sankhya i = 0;
+
+cheppu "Boolean array: [nijam, abaddham, nijam, abaddham]";
+varaku (i < 4) {
+    cheppu "Index " + i + ": " + boolArray[i];
+    i = i + 1;
+}
+
+cheppu "";
+cheppu "Summary of Boolean Operations:";
+cheppu "==============================";
+cheppu "✓ mariyu (AND): Both operands must be true";
+cheppu "✓ leda (OR): At least one operand must be true";
+cheppu "✓ kadu (NOT): Inverts the boolean value";
+cheppu "✓ Complex expressions follow operator precedence";
+cheppu "✓ Useful for conditional logic and decision making";

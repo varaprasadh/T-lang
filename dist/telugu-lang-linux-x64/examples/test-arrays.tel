@@ -1,0 +1,10 @@
+// Test if arrays work
+cheppu "Testing array support";
+
+// Try to create an array
+sankhya arr = [1, 2, 3, 4, 5];
+cheppu "Array created";
+
+// Try to access array element
+sankhya first = arr[0];
+cheppu "First element: " + first;

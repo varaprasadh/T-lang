@@ -1,0 +1,31 @@
+// Test recursion
+// cheppu "Testing simple recursion";
+
+pani countdown(sankhya n) {
+    cheppu "Countdown: " + n;
+    ayite (n > 0) {
+        countdown(n - 1);
+    }
+}
+
+// countdown(3);
+
+cheppu "";
+cheppu "Testing factorial step by step";
+
+pani factorialSimple(sankhya n) {
+    cheppu "factorial(" + n + ") called";
+    ayite (n <= 1) {
+        cheppu "Base case reached, returning 1";
+        tirigi_pampu 1;
+    } lekapothe {
+        cheppu "Recursive case: " + n + " * factorial(" + (n-1) + ")";
+        sankhya prev = factorialSimple(n - 1);
+        sankhya result = n * prev;
+        cheppu "factorial(" + n + ") = " + result;
+        tirigi_pampu result;
+    }
+}
+
+sankhya fact = factorialSimple(4);
+cheppu "Final result: " + fact;
