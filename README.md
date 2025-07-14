@@ -41,21 +41,41 @@ A programming language with Telugu keywords, designed to make coding more access
 
 ## Installation
 
-### Prerequisites
-- Rust 1.70+ installed on your system
+### Quick Install
 
-### Install Telugu Compiler
+#### macOS/Linux
 ```bash
-# Clone and build
-git clone <repository-url>
-cd telugu-lang
-./install.sh
+curl -fsSL https://raw.githubusercontent.com/varaprasadh/T-lang/main/install.sh | bash
+```
+
+#### Windows
+Open PowerShell as Administrator and run:
+```powershell
+irm https://raw.githubusercontent.com/varaprasadh/T-lang/main/scripts/install-windows.ps1 | iex
 ```
 
 ### Manual Installation
+
+1. Download the appropriate binary for your platform from [releases](https://github.com/varaprasadh/T-lang/releases)
+2. Extract the archive
+3. Add the `telc` binary to your PATH
+
+### Build from Source
+
+Prerequisites:
+- Rust 1.70+ installed on your system
+
 ```bash
+# Clone repository
+git clone https://github.com/varaprasadh/T-lang.git
+cd T-lang
+
+# Install locally (for development)
+./install.sh --local
+
+# Or manually
 cargo build --release
-cp target/release/telc /usr/local/bin/  # or any directory in your PATH
+cp target/release/telc ~/.local/bin/  # or any directory in your PATH
 ```
 
 ## Usage
