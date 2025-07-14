@@ -1,0 +1,263 @@
+// Complete REST API Example - Telugu Language
+// Real-world application: User Management System with JSONPlaceholder API
+
+cheppu "══════════════════════════════════════════";
+cheppu "    User Management System - Telugu API";
+cheppu "══════════════════════════════════════════";
+
+// Base API configuration
+sankhya baseUrl = "https://jsonplaceholder.typicode.com";
+sankhya usersEndpoint = "/users";
+sankhya postsEndpoint = "/posts";
+
+// Utility function to build API URLs
+pani buildUrl(sankhya base, sankhya endpoint, sankhya id) {
+    sankhya url = base + endpoint;
+    ayite (id > 0) {
+        url = url + "/" + id;
+    }
+    tirigi_pampu url;
+}
+
+// Utility function to create user JSON
+pani createUserJson(sankhya name, sankhya email, sankhya phone, sankhya website) {
+    sankhya json = "{";
+    json = json + "\"name\": \"" + name + "\",";
+    json = json + "\"email\": \"" + email + "\",";
+    json = json + "\"phone\": \"" + phone + "\",";
+    json = json + "\"website\": \"" + website + "\"";
+    json = json + "}";
+    tirigi_pampu json;
+}
+
+// Utility function to create post JSON
+pani createPostJson(sankhya title, sankhya body, sankhya userId) {
+    sankhya json = "{";
+    json = json + "\"title\": \"" + title + "\",";
+    json = json + "\"body\": \"" + body + "\",";
+    json = json + "\"userId\": " + userId;
+    json = json + "}";
+    tirigi_pampu json;
+}
+
+cheppu "";
+cheppu "1. User Management Operations";
+cheppu "==============================";
+
+// Function to get all users
+pani getAllUsers() {
+    sankhya url = buildUrl(baseUrl, usersEndpoint, 0);
+    cheppu "📋 Fetching all users...";
+    cheppu "GET " + url;
+    
+    sankhya response = fetch_json(url);
+    cheppu "✅ Retrieved users successfully!";
+    tirigi_pampu response;
+}
+
+// Function to get user by ID
+pani getUserById(sankhya userId) {
+    sankhya url = buildUrl(baseUrl, usersEndpoint, userId);
+    cheppu "👤 Fetching user " + userId + "...";
+    cheppu "GET " + url;
+    
+    sankhya response = fetch_json(url);
+    cheppu "✅ User " + userId + " retrieved!";
+    tirigi_pampu response;
+}
+
+// Function to create new user
+pani createUser(sankhya name, sankhya email, sankhya phone, sankhya website) {
+    sankhya url = buildUrl(baseUrl, usersEndpoint, 0);
+    sankhya userData = createUserJson(name, email, phone, website);
+    
+    cheppu "➕ Creating new user: " + name;
+    cheppu "POST " + url;
+    cheppu "Data: " + userData;
+    
+    sankhya response = post(url, userData);
+    cheppu "✅ User created successfully!";
+    tirigi_pampu response;
+}
+
+// Function to update user
+pani updateUser(sankhya userId, sankhya name, sankhya email, sankhya phone, sankhya website) {
+    sankhya url = buildUrl(baseUrl, usersEndpoint, userId);
+    sankhya userData = createUserJson(name, email, phone, website);
+    
+    cheppu "✏️ Updating user " + userId + ": " + name;
+    cheppu "PUT " + url;
+    cheppu "Data: " + userData;
+    
+    sankhya response = put(url, userData);
+    cheppu "✅ User " + userId + " updated successfully!";
+    tirigi_pampu response;
+}
+
+// Function to delete user
+pani deleteUser(sankhya userId) {
+    sankhya url = buildUrl(baseUrl, usersEndpoint, userId);
+    
+    cheppu "🗑️ Deleting user " + userId + "...";
+    cheppu "DELETE " + url;
+    
+    sankhya response = delete(url);
+    cheppu "✅ User " + userId + " deleted successfully!";
+    tirigi_pampu response;
+}
+
+cheppu "";
+cheppu "2. Post Management Operations";
+cheppu "==============================";
+
+// Function to get user's posts
+pani getUserPosts(sankhya userId) {
+    sankhya url = baseUrl + usersEndpoint + "/" + userId + postsEndpoint;
+    cheppu "📝 Fetching posts for user " + userId + "...";
+    cheppu "GET " + url;
+    
+    sankhya response = fetch_json(url);
+    cheppu "✅ Posts retrieved for user " + userId + "!";
+    tirigi_pampu response;
+}
+
+// Function to create new post
+pani createPost(sankhya title, sankhya body, sankhya userId) {
+    sankhya url = buildUrl(baseUrl, postsEndpoint, 0);
+    sankhya postData = createPostJson(title, body, userId);
+    
+    cheppu "📄 Creating new post: " + title;
+    cheppu "POST " + url;
+    cheppu "Data: " + postData;
+    
+    sankhya response = post(url, postData);
+    cheppu "✅ Post created successfully!";
+    tirigi_pampu response;
+}
+
+cheppu "";
+cheppu "3. Complete Application Demo";
+cheppu "============================";
+
+// Demo: User management workflow
+cheppu "";
+cheppu "Step 1: Get existing user";
+cheppu "-------------------------";
+sankhya existingUser = getUserById(1);
+cheppu existingUser;
+
+cheppu "";
+cheppu "Step 2: Create new user";
+cheppu "-----------------------";
+sankhya newUser = createUser("Telugu Developer", "telugu@dev.com", "123-456-7890", "telugu-dev.com");
+cheppu newUser;
+
+cheppu "";
+cheppu "Step 3: Update user information";
+cheppu "-------------------------------";
+sankhya updatedUser = updateUser(1, "Updated Telugu User", "updated@telugu.com", "987-654-3210", "updated-telugu.com");
+cheppu updatedUser;
+
+cheppu "";
+cheppu "Step 4: Get user's posts";
+cheppu "------------------------";
+sankhya userPosts = getUserPosts(1);
+cheppu userPosts;
+
+cheppu "";
+cheppu "Step 5: Create new post";
+cheppu "-----------------------";
+sankhya newPost = createPost("My Telugu Programming Experience", "I love coding in Telugu language! It makes programming more accessible.", 1);
+cheppu newPost;
+
+cheppu "";
+cheppu "Step 6: Delete user (cleanup)";
+cheppu "-----------------------------";
+sankhya deleteResult = deleteUser(1);
+cheppu deleteResult;
+
+cheppu "";
+cheppu "4. Advanced API Patterns";
+cheppu "=========================";
+
+// Function for batch operations
+pani fetchMultipleUsers() {
+    cheppu "👥 Fetching multiple users in batch...";
+    
+    sankhya user1 = getUserById(1);
+    sankhya user2 = getUserById(2);
+    sankhya user3 = getUserById(3);
+    
+    cheppu "Batch operation completed!";
+    cheppu "User 1: " + user1;
+    cheppu "User 2: " + user2;
+    cheppu "User 3: " + user3;
+}
+
+// Function for error handling pattern
+pani safeApiCall(sankhya url, sankhya operation) {
+    cheppu "🛡️ Making safe API call...";
+    cheppu "Operation: " + operation;
+    cheppu "URL: " + url;
+    
+    // In a real application, we'd have try-catch equivalent
+    sankhya response = fetch_json(url);
+    
+    ayite (response != "") {
+        cheppu "✅ API call successful";
+        tirigi_pampu response;
+    } lekapothe {
+        cheppu "❌ API call failed";
+        tirigi_pampu "{}";
+    }
+}
+
+// Demo advanced patterns
+cheppu "";
+cheppu "Advanced Pattern 1: Batch Operations";
+cheppu "------------------------------------";
+fetchMultipleUsers();
+
+cheppu "";
+cheppu "Advanced Pattern 2: Safe API Calls";
+cheppu "----------------------------------";
+sankhya safeResult = safeApiCall("https://jsonplaceholder.typicode.com/users/5", "Get User 5");
+cheppu "Safe call result: " + safeResult;
+
+cheppu "";
+cheppu "5. API Integration Summary";
+cheppu "==========================";
+
+cheppu "✅ Complete CRUD Operations:";
+cheppu "   • CREATE - POST requests for new resources";
+cheppu "   • READ   - GET requests for data retrieval";
+cheppu "   • UPDATE - PUT requests for modifications";
+cheppu "   • DELETE - DELETE requests for removal";
+
+cheppu "";
+cheppu "✅ Advanced Features:";
+cheppu "   • JSON data construction and parsing";
+cheppu "   • URL building utilities";
+cheppu "   • Batch API operations";
+cheppu "   • Error handling patterns";
+cheppu "   • Modular function design";
+
+cheppu "";
+cheppu "✅ Real-world Application:";
+cheppu "   • User management system";
+cheppu "   • Post management system";
+cheppu "   • RESTful API integration";
+cheppu "   • Production-ready patterns";
+
+cheppu "";
+cheppu "══════════════════════════════════════════";
+cheppu "    Telugu REST API Demo Complete! 🎉";
+cheppu "══════════════════════════════════════════";
+
+cheppu "";
+cheppu "📚 This example demonstrates:";
+cheppu "• How to build a complete API client in Telugu";
+cheppu "• Best practices for REST API integration";
+cheppu "• Modular function design patterns";
+cheppu "• Real-world application development";
+cheppu "• Modern web development with Telugu language!";

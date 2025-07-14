@@ -1,0 +1,28 @@
+cheppu "Hi ra";
+
+pani add(sankhya a, sankhya b) {
+    // function body
+    tirigi_pampu a+b;
+}
+
+cheppu "1 + 2 = " + add(1, 2);
+
+pani isPrime(sankhya n) {
+    ayite (n < 2) {
+        tirigi_pampu nijam;
+    }
+    prathi (i nunchi n/2) {
+        sankhya j = i + 2;
+        ayite (n % j == 0) {
+            tirigi_pampu abaddham;
+        }
+    }
+    tirigi_pampu nijam;
+    
+}
+
+cheppu "Is 5 prime? " + isPrime(5);
+cheppu "Is 7 prime? " + isPrime(7);
+cheppu "Is 10 prime? " + isPrime(10);
+
+// 0 1 1 2 3 5 8 13 21 34

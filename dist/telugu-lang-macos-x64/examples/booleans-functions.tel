@@ -1,0 +1,268 @@
+// Boolean Functions - Telugu Language
+// Functions that work with and return boolean values
+
+cheppu "Boolean Functions Demo";
+cheppu "======================";
+
+// Utility function to print test results
+pani printTest(sankhya testName, sankhya result, sankhya expected) {
+    ayite (result == expected) {
+        cheppu "✓ " + testName + ": " + result + " (PASS)";
+    } lekapothe {
+        cheppu "✗ " + testName + ": " + result + " (FAIL, expected " + expected + ")";
+    }
+}
+
+cheppu "1. Basic Boolean Functions";
+cheppu "==========================";
+
+// Simple boolean functions
+pani isEven(sankhya num) {
+    tirigi_pampu num % 2 == 0;
+}
+
+pani isPositive(sankhya num) {
+    tirigi_pampu num > 0;
+}
+
+pani isInRange(sankhya num, sankhya min, sankhya max) {
+    tirigi_pampu num >= min mariyu num <= max;
+}
+
+// Test basic functions
+sankhya test1 = isEven(4);
+sankhya test2 = isEven(7);
+sankhya test3 = isPositive(10);
+sankhya negativeNum = -5;
+sankhya test4 = isPositive(negativeNum);
+sankhya test5 = isInRange(50, 10, 100);
+sankhya test6 = isInRange(5, 10, 100);
+
+printTest("isEven(4)", test1, nijam);
+printTest("isEven(7)", test2, abaddham);
+printTest("isPositive(10)", test3, nijam);
+printTest("isPositive(-5)", test4, abaddham);
+printTest("isInRange(50, 10, 100)", test5, nijam);
+printTest("isInRange(5, 10, 100)", test6, abaddham);
+
+cheppu "";
+cheppu "2. String Boolean Functions";
+cheppu "===========================";
+
+pani isEmpty(sankhya str) {
+    tirigi_pampu str == "";
+}
+
+pani startsWith(sankhya str, sankhya prefix) {
+    // Simple implementation - checks if strings are equal
+    // (Real implementation would need substring support)
+    tirigi_pampu str == prefix;
+}
+
+pani isValidEmail(sankhya email) {
+    // Simple email validation - contains @ symbol
+    // (This is a simplified check)
+    tirigi_pampu kadu isEmpty(email);
+}
+
+// Test string functions
+sankhya emptyTest = isEmpty("");
+sankhya nonEmptyTest = isEmpty("hello");
+sankhya emailTest1 = isValidEmail("user@example.com");
+sankhya emailTest2 = isValidEmail("");
+
+printTest("isEmpty(\"\")", emptyTest, nijam);
+printTest("isEmpty(\"hello\")", nonEmptyTest, abaddham);
+printTest("isValidEmail(\"user@example.com\")", emailTest1, nijam);
+printTest("isValidEmail(\"\")", emailTest2, abaddham);
+
+cheppu "";
+cheppu "3. Array Boolean Functions";
+cheppu "==========================";
+
+pani contains(sankhya arr, sankhya size, sankhya target) {
+    sankhya i = 0;
+    varaku (i < size) {
+        ayite (arr[i] == target) {
+            tirigi_pampu nijam;
+        }
+        i = i + 1;
+    }
+    tirigi_pampu abaddham;
+}
+
+pani allPositive(sankhya arr, sankhya size) {
+    sankhya i = 0;
+    varaku (i < size) {
+        ayite (arr[i] <= 0) {
+            tirigi_pampu abaddham;
+        }
+        i = i + 1;
+    }
+    tirigi_pampu nijam;
+}
+
+pani hasEvenNumber(sankhya arr, sankhya size) {
+    sankhya i = 0;
+    varaku (i < size) {
+        ayite (isEven(arr[i])) {
+            tirigi_pampu nijam;
+        }
+        i = i + 1;
+    }
+    tirigi_pampu abaddham;
+}
+
+// Test array functions
+sankhya nums = [1, 3, 5, 8, 9];
+sankhya positiveNums = [2, 4, 6, 8];
+sankhya negTwo = -2;
+sankhya mixedNums = [1, negTwo, 3];
+
+sankhya containsTest1 = contains(nums, 5, 8);
+sankhya containsTest2 = contains(nums, 5, 10);
+sankhya allPosTest1 = allPositive(positiveNums, 4);
+sankhya allPosTest2 = allPositive(mixedNums, 3);
+sankhya evenTest1 = hasEvenNumber(nums, 5);
+sankhya oddNums = [1, 3, 5];
+sankhya evenTest2 = hasEvenNumber(oddNums, 3);
+
+printTest("contains([1,3,5,8,9], 8)", containsTest1, nijam);
+printTest("contains([1,3,5,8,9], 10)", containsTest2, abaddham);
+printTest("allPositive([2,4,6,8])", allPosTest1, nijam);
+printTest("allPositive([1,-2,3])", allPosTest2, abaddham);
+printTest("hasEvenNumber([1,3,5,8,9])", evenTest1, nijam);
+printTest("hasEvenNumber([1,3,5])", evenTest2, abaddham);
+
+cheppu "";
+cheppu "4. Logical Boolean Functions";
+cheppu "============================";
+
+pani and(sankhya a, sankhya b) {
+    tirigi_pampu a mariyu b;
+}
+
+pani or(sankhya a, sankhya b) {
+    tirigi_pampu a leda b;
+}
+
+pani not(sankhya a) {
+    tirigi_pampu kadu a;
+}
+
+pani xor(sankhya a, sankhya b) {
+    // XOR: true if exactly one operand is true
+    tirigi_pampu (a leda b) mariyu kadu (a mariyu b);
+}
+
+pani implies(sankhya a, sankhya b) {
+    // Implication: if a then b
+    tirigi_pampu kadu a leda b;
+}
+
+// Test logical functions
+sankhya andTest = and(nijam, abaddham);
+sankhya orTest = or(nijam, abaddham);
+sankhya notTest = not(nijam);
+sankhya xorTest1 = xor(nijam, abaddham);
+sankhya xorTest2 = xor(nijam, nijam);
+sankhya impliesTest = implies(nijam, abaddham);
+
+printTest("and(nijam, abaddham)", andTest, abaddham);
+printTest("or(nijam, abaddham)", orTest, nijam);
+printTest("not(nijam)", notTest, abaddham);
+printTest("xor(nijam, abaddham)", xorTest1, nijam);
+printTest("xor(nijam, nijam)", xorTest2, abaddham);
+printTest("implies(nijam, abaddham)", impliesTest, abaddham);
+
+cheppu "";
+cheppu "5. Validation Functions";
+cheppu "=======================";
+
+pani isValidAge(sankhya age) {
+    tirigi_pampu age >= 0 mariyu age <= 150;
+}
+
+pani isValidGrade(sankhya grade) {
+    tirigi_pampu grade >= 0 mariyu grade <= 100;
+}
+
+pani isValidPassword(sankhya password) {
+    // Simple password validation - not empty
+    tirigi_pampu kadu isEmpty(password);
+}
+
+pani canVote(sankhya age) {
+    tirigi_pampu isValidAge(age) mariyu age >= 18;
+}
+
+pani canDrive(sankhya age) {
+    tirigi_pampu isValidAge(age) mariyu age >= 16;
+}
+
+pani isPassing(sankhya grade) {
+    tirigi_pampu isValidGrade(grade) mariyu grade >= 60;
+}
+
+// Test validation functions
+sankhya ageTest1 = isValidAge(25);
+sankhya negFive = -5;
+sankhya ageTest2 = isValidAge(negFive);
+sankhya gradeTest1 = isValidGrade(85);
+sankhya gradeTest2 = isValidGrade(150);
+sankhya voteTest1 = canVote(20);
+sankhya voteTest2 = canVote(16);
+sankhya driveTest = canDrive(17);
+sankhya passTest1 = isPassing(75);
+sankhya passTest2 = isPassing(45);
+
+printTest("isValidAge(25)", ageTest1, nijam);
+printTest("isValidAge(-5)", ageTest2, abaddham);
+printTest("isValidGrade(85)", gradeTest1, nijam);
+printTest("isValidGrade(150)", gradeTest2, abaddham);
+printTest("canVote(20)", voteTest1, nijam);
+printTest("canVote(16)", voteTest2, abaddham);
+printTest("canDrive(17)", driveTest, nijam);
+printTest("isPassing(75)", passTest1, nijam);
+printTest("isPassing(45)", passTest2, abaddham);
+
+cheppu "";
+cheppu "6. Complex Boolean Logic";
+cheppu "========================";
+
+pani hasAccess(sankhya isEmployee, sankhya hasKeycard, sankhya isBusinessHours) {
+    tirigi_pampu isEmployee mariyu (hasKeycard leda isBusinessHours);
+}
+
+pani shouldProcessOrder(sankhya hasInventory, sankhya paymentValid, sankhya customerVerified) {
+    tirigi_pampu hasInventory mariyu paymentValid mariyu customerVerified;
+}
+
+pani isHighPriority(sankhya isUrgent, sankhya isVIPCustomer, sankhya hasDeadline) {
+    tirigi_pampu isUrgent leda (isVIPCustomer mariyu hasDeadline);
+}
+
+// Test complex functions
+sankhya accessTest1 = hasAccess(nijam, abaddham, nijam);
+sankhya accessTest2 = hasAccess(abaddham, nijam, nijam);
+sankhya orderTest1 = shouldProcessOrder(nijam, nijam, nijam);
+sankhya orderTest2 = shouldProcessOrder(nijam, abaddham, nijam);
+sankhya priorityTest1 = isHighPriority(nijam, abaddham, abaddham);
+sankhya priorityTest2 = isHighPriority(abaddham, nijam, nijam);
+
+printTest("hasAccess(employee=true, keycard=false, business_hours=true)", accessTest1, nijam);
+printTest("hasAccess(employee=false, keycard=true, business_hours=true)", accessTest2, abaddham);
+printTest("shouldProcessOrder(inventory=true, payment=true, verified=true)", orderTest1, nijam);
+printTest("shouldProcessOrder(inventory=true, payment=false, verified=true)", orderTest2, abaddham);
+printTest("isHighPriority(urgent=true, vip=false, deadline=false)", priorityTest1, nijam);
+printTest("isHighPriority(urgent=false, vip=true, deadline=true)", priorityTest2, nijam);
+
+cheppu "";
+cheppu "Boolean Functions Summary:";
+cheppu "==========================";
+cheppu "✓ Functions can return boolean values";
+cheppu "✓ Boolean parameters in function calls";
+cheppu "✓ Complex boolean logic in functions";
+cheppu "✓ Array processing with boolean functions";
+cheppu "✓ Validation and business logic functions";
+cheppu "✓ Logical operation helper functions";

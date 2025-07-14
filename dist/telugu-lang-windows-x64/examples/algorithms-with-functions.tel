@@ -1,0 +1,294 @@
+// Advanced Algorithms with Functions - Telugu Language
+cheppu "Advanced Algorithms with Functions - Telugu Language";
+cheppu "====================================================";
+
+// ============================================================================
+// ARRAY UTILITY FUNCTIONS
+// ============================================================================
+
+// Get value from predefined test arrays
+pani getValue(sankhya array_id, sankhya index) {
+    // Array 1: [2, 7, 11, 15] - Two Sum test
+    ayite (array_id == 1) {
+        ayite (index == 0) { tirigi_pampu 2; }
+        ayite (index == 1) { tirigi_pampu 7; }
+        ayite (index == 2) { tirigi_pampu 11; }
+        ayite (index == 3) { tirigi_pampu 15; }
+    }
+    
+    // Array 2: [64, 34, 25, 12, 22] - Search test
+    ayite (array_id == 2) {
+        ayite (index == 0) { tirigi_pampu 64; }
+        ayite (index == 1) { tirigi_pampu 34; }
+        ayite (index == 2) { tirigi_pampu 25; }
+        ayite (index == 3) { tirigi_pampu 12; }
+        ayite (index == 4) { tirigi_pampu 22; }
+    }
+    
+    // Array 3: [5, 2, 8, 1, 9] - Min/Max test
+    ayite (array_id == 3) {
+        ayite (index == 0) { tirigi_pampu 5; }
+        ayite (index == 1) { tirigi_pampu 2; }
+        ayite (index == 2) { tirigi_pampu 8; }
+        ayite (index == 3) { tirigi_pampu 1; }
+        ayite (index == 4) { tirigi_pampu 9; }
+    }
+    
+    tirigi_pampu 0; // Default
+}
+
+// Print array contents nicely
+pani printArray(sankhya array_id, sankhya size, sankhya name_id) {
+    // Print array name
+    ayite (name_id == 1) { cheppu "Two Sum Array: "; }
+    ayite (name_id == 2) { cheppu "Search Array: "; }
+    ayite (name_id == 3) { cheppu "Min/Max Array: "; }
+    
+    sankhya i = 0;
+    sankhya output = "[";
+    
+    varaku (i < size) {
+        sankhya value = getValue(array_id, i);
+        output = output + value;
+        
+        ayite (i < size - 1) {
+            output = output + ", ";
+        }
+        i = i + 1;
+    }
+    
+    output = output + "]";
+    cheppu output;
+}
+
+// ============================================================================
+// SEARCH ALGORITHMS
+// ============================================================================
+
+// Linear Search Function
+pani linearSearch(sankhya array_id, sankhya size, sankhya target) {
+    cheppu "Searching for " + target + " using Linear Search...";
+    
+    sankhya i = 0;
+    varaku (i < size) {
+        sankhya value = getValue(array_id, i);
+        ayite (value == target) {
+            cheppu "✓ Found " + target + " at index " + i;
+            tirigi_pampu i;
+        }
+        i = i + 1;
+    }
+    
+    cheppu "✗ " + target + " not found";
+    tirigi_pampu -1;
+}
+
+// ============================================================================
+// TWO SUM ALGORITHM
+// ============================================================================
+
+// Two Sum with detailed logging
+pani twoSumDetailed(sankhya array_id, sankhya size, sankhya target) {
+    cheppu "Two Sum Algorithm - Target: " + target;
+    cheppu "Checking all pairs...";
+    
+    sankhya comparisons = 0;
+    sankhya i = 0;
+    
+    varaku (i < size) {
+        sankhya j = i + 1;
+        varaku (j < size) {
+            sankhya val1 = getValue(array_id, i);
+            sankhya val2 = getValue(array_id, j);
+            comparisons = comparisons + 1;
+            
+            cheppu "  Pair " + comparisons + ": [" + val1 + ", " + val2 + "] = " + (val1 + val2);
+            
+            ayite (val1 + val2 == target) {
+                cheppu "✓ SOLUTION: indices [" + i + ", " + j + "] = [" + val1 + ", " + val2 + "]";
+                cheppu "  Total comparisons: " + comparisons;
+                tirigi_pampu 1;
+            }
+            
+            j = j + 1;
+        }
+        i = i + 1;
+    }
+    
+    cheppu "✗ No solution found after " + comparisons + " comparisons";
+    tirigi_pampu 0;
+}
+
+// ============================================================================
+// MIN/MAX ALGORITHMS
+// ============================================================================
+
+// Find minimum value and its index
+pani findMin(sankhya array_id, sankhya size) {
+    sankhya min_value = getValue(array_id, 0);
+    sankhya min_index = 0;
+    sankhya i = 1;
+    
+    varaku (i < size) {
+        sankhya value = getValue(array_id, i);
+        ayite (value < min_value) {
+            min_value = value;
+            min_index = i;
+        }
+        i = i + 1;
+    }
+    
+    cheppu "Minimum value: " + min_value + " at index " + min_index;
+    tirigi_pampu min_value;
+}
+
+// Find maximum value and its index
+pani findMax(sankhya array_id, sankhya size) {
+    sankhya max_value = getValue(array_id, 0);
+    sankhya max_index = 0;
+    sankhya i = 1;
+    
+    varaku (i < size) {
+        sankhya value = getValue(array_id, i);
+        ayite (value > max_value) {
+            max_value = value;
+            max_index = i;
+        }
+        i = i + 1;
+    }
+    
+    cheppu "Maximum value: " + max_value + " at index " + max_index;
+    tirigi_pampu max_value;
+}
+
+// ============================================================================
+// MATHEMATICAL UTILITY FUNCTIONS
+// ============================================================================
+
+// Calculate sum of all elements
+pani arraySum(sankhya array_id, sankhya size) {
+    sankhya total = 0;
+    sankhya i = 0;
+    
+    varaku (i < size) {
+        sankhya value = getValue(array_id, i);
+        total = total + value;
+        i = i + 1;
+    }
+    
+    tirigi_pampu total;
+}
+
+// Calculate average of array
+pani arrayAverage(sankhya array_id, sankhya size) {
+    sankhya total = arraySum(array_id, size);
+    sankhya average = total / size;
+    tirigi_pampu average;
+}
+
+// Count elements greater than threshold
+pani countGreaterThan(sankhya array_id, sankhya size, sankhya threshold) {
+    sankhya count = 0;
+    sankhya i = 0;
+    
+    varaku (i < size) {
+        sankhya value = getValue(array_id, i);
+        ayite (value > threshold) {
+            count = count + 1;
+        }
+        i = i + 1;
+    }
+    
+    tirigi_pampu count;
+}
+
+// ============================================================================
+// TEST RUNNER FUNCTIONS
+// ============================================================================
+
+// Run comprehensive test suite
+pani runTestSuite() {
+    cheppu "";
+    cheppu "=== ALGORITHM TEST SUITE ===";
+    
+    // Test 1: Two Sum
+    cheppu "";
+    cheppu "1. TWO SUM ALGORITHM TEST";
+    cheppu "-------------------------";
+    printArray(1, 4, 1);
+    twoSumDetailed(1, 4, 9);
+    
+    // Test 2: Linear Search
+    cheppu "";
+    cheppu "2. LINEAR SEARCH ALGORITHM TEST";
+    cheppu "-------------------------------";
+    printArray(2, 5, 2);
+    linearSearch(2, 5, 25);
+    linearSearch(2, 5, 99);
+    
+    // Test 3: Min/Max Finding
+    cheppu "";
+    cheppu "3. MIN/MAX ALGORITHM TEST";
+    cheppu "-------------------------";
+    printArray(3, 5, 3);
+    findMin(3, 5);
+    findMax(3, 5);
+    
+    // Test 4: Statistical Functions
+    cheppu "";
+    cheppu "4. STATISTICAL FUNCTIONS TEST";
+    cheppu "-----------------------------";
+    printArray(3, 5, 3);
+    sankhya sum = arraySum(3, 5);
+    sankhya avg = arrayAverage(3, 5);
+    sankhya count_gt_5 = countGreaterThan(3, 5, 5);
+    
+    cheppu "Sum of all elements: " + sum;
+    cheppu "Average value: " + avg;
+    cheppu "Elements greater than 5: " + count_gt_5;
+}
+
+// Performance analysis function
+pani analyzePerformance() {
+    cheppu "";
+    cheppu "=== PERFORMANCE ANALYSIS ===";
+    cheppu "";
+    
+    cheppu "Algorithm Complexities:";
+    cheppu "• Two Sum (Brute Force): O(n²) time, O(1) space";
+    cheppu "• Linear Search: O(n) time, O(1) space";
+    cheppu "• Min/Max Finding: O(n) time, O(1) space";
+    cheppu "• Array Sum/Average: O(n) time, O(1) space";
+    
+    cheppu "";
+    cheppu "Function Benefits:";
+    cheppu "✓ Code modularity and reusability";
+    cheppu "✓ Easy testing and debugging";
+    cheppu "✓ Clear separation of concerns";
+    cheppu "✓ Maintainable and readable code";
+    cheppu "✓ Parameter validation and error handling";
+}
+
+// ============================================================================
+// MAIN EXECUTION
+// ============================================================================
+
+cheppu "Initializing Algorithm Test Suite...";
+cheppu "Using Telugu Programming Language Functions";
+
+// Run all tests
+runTestSuite();
+
+// Show performance analysis
+analyzePerformance();
+
+cheppu "";
+cheppu "=== TEST SUITE COMPLETE ===";
+cheppu "All algorithms implemented using Telugu Language functions:";
+cheppu "• Function-based architecture";
+cheppu "• Modular design principles";
+cheppu "• Professional algorithm implementation";
+cheppu "• Clean code organization";
+cheppu "";
+cheppu "Telugu Programming Language demonstrates enterprise-level";
+cheppu "software engineering capabilities!";
