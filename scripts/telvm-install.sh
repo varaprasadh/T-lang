@@ -5,7 +5,7 @@
 
 TELVM_VERSION="0.1.0"
 TELVM_DIR="${TELVM_DIR:-$HOME/.telvm}"
-TELVM_REPO="https://github.com/YOUR_USERNAME/telugu-lang"
+TELVM_REPO="https://github.com/varaprasadh/T-lang"
 
 # Colors
 RED='\033[0;31m'
@@ -114,7 +114,7 @@ install_version() {
     local binary_name="telugu-lang-${os}-${arch}.tar.gz"
     
     echo "Downloading $binary_name..."
-    # curl -L "https://github.com/YOUR_USERNAME/telugu-lang/releases/download/v$version/$binary_name" -o "$binary_name"
+    # curl -L "https://github.com/varaprasadh/T-lang/releases/download/v$version/$binary_name" -o "$binary_name"
     # tar -xzf "$binary_name" -C "$version_dir"
     
     # For now, just create a placeholder

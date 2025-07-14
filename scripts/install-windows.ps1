@@ -10,7 +10,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 # Repository information
-$RepoUrl = "https://github.com/YOUR_USERNAME/telugu-lang"
+$RepoUrl = "https://github.com/varaprasadh/T-lang"
 $BinaryName = "telc.exe"
 
 # Colors for output

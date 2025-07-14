@@ -105,18 +105,18 @@ jobs:
           
           #### macOS (Homebrew)
           ```bash
-          brew tap YOUR_USERNAME/telugu-lang
+          brew tap varaprasadh/T-lang
           brew install telugu-lang
           ```
           
           #### Linux
           ```bash
-          curl -sSL https://raw.githubusercontent.com/YOUR_USERNAME/telugu-lang/main/scripts/install-linux.sh | bash
+          curl -sSL https://raw.githubusercontent.com/varaprasadh/T-lang/main/scripts/install-linux.sh | bash
           ```
           
           #### Windows (PowerShell as Administrator)
           ```powershell
-          irm https://raw.githubusercontent.com/YOUR_USERNAME/telugu-lang/main/scripts/install-windows.ps1 | iex
+          irm https://raw.githubusercontent.com/varaprasadh/T-lang/main/scripts/install-windows.ps1 | iex
           ```
           
           #### Manual Installation
@@ -144,7 +144,7 @@ jobs:
         
         # Update the formula
         sed -i "s/PLACEHOLDER_SHA256/${SHA256}/" Formula/telugu-lang.rb
-        sed -i "s/YOUR_USERNAME/${{ github.repository_owner }}/" Formula/telugu-lang.rb
+        sed -i "s/varaprasadh/${{ github.repository_owner }}/" Formula/telugu-lang.rb
         sed -i "s/version \".*\"/version \"${VERSION}\"/" Formula/telugu-lang.rb
     
     - name: Commit formula update

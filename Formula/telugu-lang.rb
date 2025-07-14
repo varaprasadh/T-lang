@@ -1,7 +1,7 @@
 class TeluguLang < Formula
   desc "Telugu Programming Language Compiler"
-  homepage "https://github.com/YOUR_USERNAME/telugu-lang"
-  url "https://github.com/YOUR_USERNAME/telugu-lang/archive/refs/tags/v0.1.0.tar.gz"
+  homepage "https://github.com/varaprasadh/T-lang"
+  url "https://github.com/varaprasadh/T-lang/archive/refs/tags/v0.1.0.tar.gz"
   sha256 "PLACEHOLDER_SHA256"
   license "MIT"
 

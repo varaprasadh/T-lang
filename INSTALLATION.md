@@ -7,20 +7,20 @@ Telugu Language can be installed easily on any platform, similar to how you woul
 ### macOS (Homebrew)
 
 ```bash
-brew tap YOUR_USERNAME/telugu-lang
+brew tap varaprasadh/T-lang
 brew install telugu-lang
 ```
 
 ### Linux
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/YOUR_USERNAME/telugu-lang/main/scripts/install-linux.sh | bash
+curl -sSL https://raw.githubusercontent.com/varaprasadh/T-lang/main/scripts/install-linux.sh | bash
 ```
 
 ### Windows (PowerShell as Administrator)
 
 ```powershell
-irm https://raw.githubusercontent.com/YOUR_USERNAME/telugu-lang/main/scripts/install-windows.ps1 | iex
+irm https://raw.githubusercontent.com/varaprasadh/T-lang/main/scripts/install-windows.ps1 | iex
 ```
 
 ## Version Manager (TelVM)
@@ -28,7 +28,7 @@ irm https://raw.githubusercontent.com/YOUR_USERNAME/telugu-lang/main/scripts/ins
 For managing multiple versions of Telugu Language (similar to SDKMAN for Java):
 
 ```bash
-curl -s https://raw.githubusercontent.com/YOUR_USERNAME/telugu-lang/main/scripts/telvm-install.sh | bash
+curl -s https://raw.githubusercontent.com/varaprasadh/T-lang/main/scripts/telvm-install.sh | bash
 ```
 
 Then use:
@@ -40,7 +40,7 @@ telvm list
 
 ## Manual Installation
 
-1. Download the appropriate binary for your platform from [Releases](https://github.com/YOUR_USERNAME/telugu-lang/releases)
+1. Download the appropriate binary for your platform from [Releases](https://github.com/varaprasadh/T-lang/releases)
 2. Extract the archive
 3. Add the `telc` binary to your PATH
 

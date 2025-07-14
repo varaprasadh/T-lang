@@ -1,0 +1,238 @@
+// Weather App Example - Telugu Language REST API
+// Practical example: Building a weather application
+
+cheppu "🌤️  Weather App - Telugu Language";
+cheppu "==================================";
+
+// Weather API configuration (using a public API for demo)
+sankhya weatherBaseUrl = "https://api.openweathermap.org/data/2.5";
+sankhya geoBaseUrl = "http://api.openweathermap.org/geo/1.0";
+
+// Note: In real application, you'd use your own API key
+// For demo purposes, we'll use JSONPlaceholder for structure demonstration
+sankhya demoApiUrl = "https://jsonplaceholder.typicode.com";
+
+cheppu "";
+cheppu "📍 Location Services";
+cheppu "===================";
+
+// Function to simulate getting location coordinates
+pani getLocationInfo(sankhya cityName) {
+    cheppu "🔍 Looking up location: " + cityName;
+    
+    // Demo: Using JSONPlaceholder to simulate location API response
+    sankhya demoUrl = demoApiUrl + "/users/1";
+    sankhya locationData = fetch_json(demoUrl);
+    
+    cheppu "✅ Location found!";
+    tirigi_pampu locationData;
+}
+
+cheppu "";
+cheppu "🌡️  Weather Data Services";
+cheppu "==========================";
+
+// Function to get current weather
+pani getCurrentWeather(sankhya cityName) {
+    cheppu "🌤️ Fetching current weather for: " + cityName;
+    
+    // Demo: Using JSONPlaceholder to simulate weather API
+    sankhya weatherUrl = demoApiUrl + "/posts/1";
+    sankhya weatherData = fetch_json(weatherUrl);
+    
+    cheppu "✅ Current weather data retrieved!";
+    tirigi_pampu weatherData;
+}
+
+// Function to get weather forecast
+pani getWeatherForecast(sankhya cityName, sankhya days) {
+    cheppu "📅 Fetching " + days + "-day forecast for: " + cityName;
+    
+    // Demo: Using JSONPlaceholder to simulate forecast API
+    sankhya forecastUrl = demoApiUrl + "/posts";
+    sankhya forecastData = fetch_json(forecastUrl);
+    
+    cheppu "✅ Weather forecast retrieved!";
+    tirigi_pampu forecastData;
+}
+
+cheppu "";
+cheppu "🎯 Weather App Main Functions";
+cheppu "=============================";
+
+// Main weather app function
+pani getCompleteWeatherInfo(sankhya cityName) {
+    cheppu "";
+    cheppu "🌍 Complete Weather Report for: " + cityName;
+    cheppu "================================================";
+    
+    // Step 1: Get location info
+    cheppu "Step 1: Getting location information...";
+    sankhya location = getLocationInfo(cityName);
+    cheppu "Location Data:";
+    cheppu location;
+    
+    cheppu "";
+    
+    // Step 2: Get current weather
+    cheppu "Step 2: Getting current weather...";
+    sankhya currentWeather = getCurrentWeather(cityName);
+    cheppu "Current Weather:";
+    cheppu currentWeather;
+    
+    cheppu "";
+    
+    // Step 3: Get forecast
+    cheppu "Step 3: Getting weather forecast...";
+    sankhya forecast = getWeatherForecast(cityName, 5);
+    cheppu "5-Day Forecast:";
+    cheppu forecast;
+    
+    cheppu "";
+    cheppu "✅ Complete weather report ready!";
+}
+
+// Function to save weather data (simulate POST to personal API)
+pani saveWeatherReport(sankhya cityName, sankhya weatherData) {
+    cheppu "💾 Saving weather report for: " + cityName;
+    
+    // Create weather report JSON
+    sankhya reportJson = "{";
+    reportJson = reportJson + "\"city\": \"" + cityName + "\",";
+    reportJson = reportJson + "\"timestamp\": \"2024-01-15T10:00:00Z\",";
+    reportJson = reportJson + "\"data\": \"" + weatherData + "\"";
+    reportJson = reportJson + "}";
+    
+    // Demo: Save to JSONPlaceholder (simulates personal API)
+    sankhya saveUrl = demoApiUrl + "/posts";
+    sankhya saveResponse = post(saveUrl, reportJson);
+    
+    cheppu "✅ Weather report saved!";
+    cheppu "Save Response: " + saveResponse;
+    
+    tirigi_pampu saveResponse;
+}
+
+cheppu "";
+cheppu "🚀 Weather App Demo";
+cheppu "==================";
+
+// Demo 1: Get weather for Hyderabad
+cheppu "Demo 1: Hyderabad Weather";
+cheppu "-------------------------";
+getCompleteWeatherInfo("Hyderabad");
+
+cheppu "";
+cheppu "Demo 2: Get weather for Visakhapatnam";
+cheppu "-------------------------------------";
+getCompleteWeatherInfo("Visakhapatnam");
+
+cheppu "";
+cheppu "Demo 3: Save weather report";
+cheppu "---------------------------";
+sankhya weatherReport = "Sunny, 28°C, Light winds";
+saveWeatherReport("Chennai", weatherReport);
+
+cheppu "";
+cheppu "🔧 Weather App Utilities";
+cheppu "========================";
+
+// Function to convert temperature
+pani convertTemperature(sankhya celsius) {
+    sankhya fahrenheit = (celsius * 9 / 5) + 32;
+    cheppu "🌡️ Temperature Conversion:";
+    cheppu "Celsius: " + celsius + "°C";
+    cheppu "Fahrenheit: " + fahrenheit + "°F";
+    tirigi_pampu fahrenheit;
+}
+
+// Function to get weather alerts (simulate external alert API)
+pani getWeatherAlerts(sankhya region) {
+    cheppu "⚠️ Checking weather alerts for: " + region;
+    
+    // Demo: Get alerts from API
+    sankhya alertsUrl = demoApiUrl + "/todos/1";
+    sankhya alertsData = fetch_json(alertsUrl);
+    
+    cheppu "Alert Status: " + alertsData;
+    tirigi_pampu alertsData;
+}
+
+// Demo utility functions
+cheppu "Utility Demo 1: Temperature Conversion";
+cheppu "--------------------------------------";
+convertTemperature(25);
+
+cheppu "";
+cheppu "Utility Demo 2: Weather Alerts";
+cheppu "------------------------------";
+getWeatherAlerts("Andhra Pradesh");
+
+cheppu "";
+cheppu "📱 Mobile App Simulation";
+cheppu "========================";
+
+// Function to simulate mobile app dashboard
+pani createWeatherDashboard(sankhya userName, sankhya favoriteCity) {
+    cheppu "📱 Creating weather dashboard for: " + userName;
+    cheppu "Favorite City: " + favoriteCity;
+    
+    // Get user's favorite city weather
+    sankhya dashboardWeather = getCurrentWeather(favoriteCity);
+    
+    // Create dashboard JSON
+    sankhya dashboardJson = "{";
+    dashboardJson = dashboardJson + "\"user\": \"" + userName + "\",";
+    dashboardJson = dashboardJson + "\"favoriteCity\": \"" + favoriteCity + "\",";
+    dashboardJson = dashboardJson + "\"weatherData\": \"" + dashboardWeather + "\",";
+    dashboardJson = dashboardJson + "\"lastUpdated\": \"2024-01-15T10:30:00Z\"";
+    dashboardJson = dashboardJson + "}";
+    
+    cheppu "📊 Dashboard created successfully!";
+    cheppu "Dashboard Data: " + dashboardJson;
+    
+    tirigi_pampu dashboardJson;
+}
+
+// Demo mobile app
+cheppu "Mobile App Demo: User Dashboard";
+cheppu "-------------------------------";
+createWeatherDashboard("Telugu Developer", "Bangalore");
+
+cheppu "";
+cheppu "🎯 Weather App Summary";
+cheppu "======================";
+
+cheppu "✅ Features Implemented:";
+cheppu "• Location lookup and geocoding";
+cheppu "• Current weather data fetching";
+cheppu "• Multi-day weather forecasting";
+cheppu "• Weather report saving";
+cheppu "• Temperature conversion utilities";
+cheppu "• Weather alerts monitoring";
+cheppu "• Mobile dashboard creation";
+
+cheppu "";
+cheppu "✅ API Integration Patterns:";
+cheppu "• Multiple API endpoints handling";
+cheppu "• JSON data construction";
+cheppu "• Error handling and validation";
+cheppu "• Data transformation and processing";
+cheppu "• RESTful service consumption";
+
+cheppu "";
+cheppu "✅ Real-world Applications:";
+cheppu "• Weather forecasting apps";
+cheppu "• Agricultural planning tools";
+cheppu "• Travel and tourism platforms";
+cheppu "• Emergency alert systems";
+cheppu "• Smart city dashboards";
+
+cheppu "";
+cheppu "🌟 This weather app demonstrates how Telugu language";
+cheppu "   can be used to build modern, API-driven applications!";
+
+cheppu "";
+cheppu "═══════════════════════════════════════════════";
+cheppu "     Weather App Demo Complete! ☀️🌧️⛈️";
+cheppu "═══════════════════════════════════════════════";
