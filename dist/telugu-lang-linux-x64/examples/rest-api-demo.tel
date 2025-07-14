@@ -1,0 +1,43 @@
+cheppu "REST API Demo - Telugu Language";
+cheppu "===============================";
+
+cheppu "";
+cheppu "1. GET Request";
+cheppu "=============";
+
+sankhya getUrl = "https://jsonplaceholder.typicode.com/posts/1";
+cheppu "GET " + getUrl;
+sankhya getResponse = fetch_json(getUrl);
+cheppu "Response: " + getResponse;
+
+// cheppu "";
+// cheppu "2. POST Request";
+// cheppu "==============";
+
+// sankhya postUrl = "https://jsonplaceholder.typicode.com/posts";
+// sankhya postBody = "{\"title\": \"Telugu Post\", \"body\": \"Created with Telugu!\", \"userId\": 1}";
+
+// cheppu "POST " + postUrl;
+// cheppu "Body: " + postBody;
+// sankhya postResponse = post(postUrl, postBody);
+// cheppu "Response: " + postResponse;
+
+// cheppu "";
+// cheppu "3. PUT Request";
+// cheppu "=============";
+
+// sankhya putUrl = "https://jsonplaceholder.typicode.com/posts/1";
+// sankhya putBody = "{\"id\": 1, \"title\": \"Updated Telugu Post\", \"body\": \"Updated with Telugu!\", \"userId\": 1}";
+
+// cheppu "PUT " + putUrl;
+// sankhya putResponse = put(putUrl, putBody);
+// cheppu "Response: " + putResponse;
+
+// cheppu "";
+// cheppu "4. DELETE Request";
+// cheppu "================";
+
+// sankhya deleteUrl = "https://jsonplaceholder.typicode.com/posts/1";
+// cheppu "DELETE " + deleteUrl;
+// sankhya deleteResponse = delete(deleteUrl);
+// cheppu "Response: " + deleteResponse;

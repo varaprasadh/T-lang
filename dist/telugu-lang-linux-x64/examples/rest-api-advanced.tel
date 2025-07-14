@@ -1,0 +1,173 @@
+// Advanced REST API Examples - Telugu Language
+// Demonstrates CRUD operations with HTTP methods
+
+cheppu "Advanced REST API Examples";
+cheppu "==========================";
+
+cheppu "";
+cheppu "1. GET Request (Read)";
+cheppu "====================";
+
+// Function to fetch a user by ID
+pani getUser(sankhya userId) {
+    sankhya baseUrl = "https://jsonplaceholder.typicode.com/users/";
+    sankhya url = baseUrl + userId;
+    
+    cheppu "GET " + url;
+    sankhya response = fetch_json(url);
+    tirigi_pampu response;
+}
+
+// Fetch user data
+sankhya user1 = getUser(1);
+cheppu "User 1 Data:";
+cheppu user1;
+
+cheppu "";
+cheppu "2. POST Request (Create)";
+cheppu "=======================";
+
+// Function to create a new post
+pani createPost(sankhya title, sankhya body, sankhya userId) {
+    sankhya url = "https://jsonplaceholder.typicode.com/posts";
+    
+    // Create JSON body
+    sankhya jsonBody = "{";
+    jsonBody = jsonBody + "\"title\": \"" + title + "\",";
+    jsonBody = jsonBody + "\"body\": \"" + body + "\",";
+    jsonBody = jsonBody + "\"userId\": " + userId;
+    jsonBody = jsonBody + "}";
+    
+    cheppu "POST " + url;
+    cheppu "Body: " + jsonBody;
+    
+    sankhya response = post(url, jsonBody);
+    tirigi_pampu response;
+}
+
+// Create a new post
+sankhya newPost = createPost("My Telugu Post", "This is a post created using Telugu language!", 1);
+cheppu "Created Post Response:";
+cheppu newPost;
+
+cheppu "";
+cheppu "3. PUT Request (Update)";
+cheppu "======================";
+
+// Function to update a post
+pani updatePost(sankhya postId, sankhya title, sankhya body, sankhya userId) {
+    sankhya baseUrl = "https://jsonplaceholder.typicode.com/posts/";
+    sankhya url = baseUrl + postId;
+    
+    // Create JSON body
+    sankhya jsonBody = "{";
+    jsonBody = jsonBody + "\"id\": " + postId + ",";
+    jsonBody = jsonBody + "\"title\": \"" + title + "\",";
+    jsonBody = jsonBody + "\"body\": \"" + body + "\",";
+    jsonBody = jsonBody + "\"userId\": " + userId;
+    jsonBody = jsonBody + "}";
+    
+    cheppu "PUT " + url;
+    cheppu "Body: " + jsonBody;
+    
+    sankhya response = put(url, jsonBody);
+    tirigi_pampu response;
+}
+
+// Update an existing post
+sankhya updatedPost = updatePost(1, "Updated Telugu Post", "This post was updated using Telugu language!", 1);
+cheppu "Updated Post Response:";
+cheppu updatedPost;
+
+cheppu "";
+cheppu "4. DELETE Request (Delete)";
+cheppu "=========================";
+
+// Function to delete a post
+pani deletePost(sankhya postId) {
+    sankhya baseUrl = "https://jsonplaceholder.typicode.com/posts/";
+    sankhya url = baseUrl + postId;
+    
+    cheppu "DELETE " + url;
+    
+    sankhya response = delete(url);
+    tirigi_pampu response;
+}
+
+// Delete a post
+sankhya deleteResponse = deletePost(1);
+cheppu "Delete Response:";
+cheppu deleteResponse;
+
+cheppu "";
+cheppu "5. REST API Utility Functions";
+cheppu "=============================";
+
+// Function to build API URLs
+pani buildApiUrl(sankhya baseUrl, sankhya endpoint, sankhya id) {
+    sankhya url = baseUrl + endpoint;
+    ayite (id > 0) {
+        url = url + "/" + id;
+    }
+    tirigi_pampu url;
+}
+
+// Function to create JSON user data
+pani createUserJson(sankhya name, sankhya email, sankhya phone) {
+    sankhya json = "{";
+    json = json + "\"name\": \"" + name + "\",";
+    json = json + "\"email\": \"" + email + "\",";
+    json = json + "\"phone\": \"" + phone + "\"";
+    json = json + "}";
+    tirigi_pampu json;
+}
+
+// Demonstrate utility functions
+sankhya apiBase = "https://jsonplaceholder.typicode.com";
+sankhya usersUrl = buildApiUrl(apiBase, "users", 0);
+sankhya userUrl = buildApiUrl(apiBase, "users", 2);
+
+cheppu "API URLs:";
+cheppu "All users: " + usersUrl;
+cheppu "Specific user: " + userUrl;
+
+sankhya userJson = createUserJson("Telugu User", "telugu@example.com", "123-456-7890");
+cheppu "User JSON: " + userJson;
+
+cheppu "";
+cheppu "6. Error Handling Pattern";
+cheppu "=========================";
+
+// Function with basic error handling
+pani safeApiCall(sankhya url) {
+    cheppu "Making safe API call to: " + url;
+    
+    // In a real implementation, we'd wrap this in try-catch
+    // For now, we'll just demonstrate the pattern
+    sankhya response = fetch_json(url);
+    
+    ayite (response != "") {
+        cheppu "API call successful";
+        tirigi_pampu response;
+    } lekapothe {
+        cheppu "API call failed";
+        tirigi_pampu "{}";
+    }
+}
+
+// Test safe API call
+sankhya safeResponse = safeApiCall("https://jsonplaceholder.typicode.com/users/3");
+cheppu "Safe API Response:";
+cheppu safeResponse;
+
+cheppu "";
+cheppu "REST API Summary:";
+cheppu "=================";
+cheppu "✓ GET - Read data from API";
+cheppu "✓ POST - Create new resources";
+cheppu "✓ PUT - Update existing resources";
+cheppu "✓ DELETE - Remove resources";
+cheppu "✓ JSON body construction";
+cheppu "✓ URL building utilities";
+cheppu "✓ Error handling patterns";
+cheppu "✓ Complete CRUD operations in Telugu!";

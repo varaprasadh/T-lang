@@ -1,0 +1,43 @@
+// thinf // Conditional statements demo
+cheppu "Telugu Language Conditionals Demo";
+cheppu "==================================";
+
+sankhya score = 85;
+cheppu "Student score: " + score;
+
+// Grade system
+ayite (score >= 90) {
+    cheppu "Grade: A+ (Excellent!)";
+} lekapothe {
+    ayite (score >= 80) {
+        cheppu "Grade: A (Very Good!)";
+    } lekapothe {
+        ayite (score >= 70) {
+            cheppu "Grade: B (Good!)";
+        } lekapothe {
+            ayite (score >= 60) {
+                cheppu "Grade: C (Average)";
+            } lekapothe {
+                cheppu "Grade: F (Need to improve)";
+            }
+        }
+    }
+}
+
+// Age category
+sankhya age = 25;
+cheppu "\nAge: " + age;
+
+ayite (age < 13) {
+    cheppu "Category: Child";
+} lekapothe {
+    ayite (age < 20) {
+        cheppu "Category: Teenager";
+    } lekapothe {
+        ayite (age < 60) {
+            cheppu "Category: Adult";
+        } lekapothe {
+            cheppu "Category: Senior";
+        }
+    }
+}

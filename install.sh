@@ -69,6 +69,68 @@ get_latest_version() {
     fi
 }
 
+# Install from local source (for development)
+install_from_source() {
+    echo -e "${BLUE}Telugu Language Compiler - Local Development Install${NC}"
+    echo "==================================================="
+    
+    # Check if we're in the source directory
+    if [ ! -f "Cargo.toml" ]; then
+        echo -e "${RED}Error: Not in source directory. Run from the project root.${NC}"
+        exit 1
+    fi
+    
+    # Check if Rust is installed
+    if ! command -v cargo &> /dev/null; then
+        echo -e "${RED}Error: Rust/Cargo not found. Please install Rust first.${NC}"
+        echo "Visit: https://rustup.rs/"
+        exit 1
+    fi
+    
+    echo -e "${YELLOW}Building Telugu Language from source...${NC}"
+    cargo build --release
+    
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}❌ Build failed!${NC}"
+        exit 1
+    fi
+    
+    # Create installation directory
+    mkdir -p "$INSTALL_DIR/bin"
+    mkdir -p "$INSTALL_DIR/examples"
+    mkdir -p "$INSTALL_DIR/doc"
+    
+    # Copy files
+    echo -e "${YELLOW}Installing files...${NC}"
+    cp "target/release/telc" "$INSTALL_DIR/bin/"
+    chmod +x "$INSTALL_DIR/bin/telc"
+    
+    if [ -d "examples" ]; then
+        cp -r examples/* "$INSTALL_DIR/examples/"
+    fi
+    
+    if [ -f "README.md" ]; then
+        cp "README.md" "$INSTALL_DIR/doc/"
+    fi
+    
+    # Add to PATH
+    add_to_path
+    
+    # Add to current session
+    export PATH="$INSTALL_DIR/bin:$PATH"
+    
+    echo ""
+    echo -e "${GREEN}✅ Telugu Language installed from source!${NC}"
+    echo ""
+    echo "Installation location: $INSTALL_DIR"
+    echo "Binary: $INSTALL_DIR/bin/telc"
+    echo ""
+    echo -e "${GREEN}telc command is now available in this session!${NC}"
+    echo ""
+    echo "Test it: telc examples/hello.tel"
+    echo "To rebuild and reinstall, run: ./install.sh --local"
+}
+
 # Install Telugu Language
 install_telugu_lang() {
     echo -e "${BLUE}Telugu Language Compiler - Universal Installer${NC}"
@@ -213,6 +275,9 @@ uninstall() {
 
 # Parse arguments
 case "${1:-}" in
+    --local|-l)
+        install_from_source
+        ;;
     --uninstall|-u)
         uninstall
         ;;
@@ -224,16 +289,30 @@ case "${1:-}" in
         echo "Telugu Language Universal Installer"
         echo ""
         echo "Usage:"
-        echo "  curl -fsSL $REPO_RAW_URL/install.sh | bash        # Install latest"
+        echo "  ./install.sh --local                              # Build and install from source (development)"
+        echo "  curl -fsSL $REPO_RAW_URL/install.sh | bash        # Install latest from GitHub"
         echo "  curl -fsSL $REPO_RAW_URL/install.sh | bash -s -- --version 0.1.0  # Specific version"
         echo "  curl -fsSL $REPO_RAW_URL/install.sh | bash -s -- --uninstall     # Uninstall"
         echo ""
         echo "Options:"
-        echo "  --version, -v VERSION    Install specific version"
+        echo "  --local, -l             Build and install from source (for development)"
+        echo "  --version, -v VERSION   Install specific version from GitHub"
         echo "  --uninstall, -u         Uninstall Telugu Language"
         echo "  --help, -h              Show this help"
+        echo ""
+        echo "Development workflow:"
+        echo "  ./install.sh --local    # Build and install locally"
+        echo "  # Make changes to code"
+        echo "  ./install.sh --local    # Rebuild and reinstall"
         ;;
     *)
-        install_telugu_lang
+        # Auto-detect: if Cargo.toml exists, assume local development
+        if [ -f "Cargo.toml" ]; then
+            echo -e "${YELLOW}Detected local source directory. Installing from source...${NC}"
+            echo -e "${YELLOW}Use './install.sh --local' to be explicit, or run from outside the project for remote install.${NC}"
+            install_from_source
+        else
+            install_telugu_lang
+        fi
         ;;
 esac

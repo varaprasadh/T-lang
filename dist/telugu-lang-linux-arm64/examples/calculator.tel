@@ -1,0 +1,19 @@
+// Basic calculator demo
+sankhya a = 15;
+sankhya b = 25;
+
+cheppu "Calculator Demo";
+cheppu "================";
+
+cheppu "First number: " + a;
+cheppu "Second number: " + b;
+
+sankhya sum = a + b;
+sankhya diff = a - b;
+sankhya product = a * b;
+sankhya quotient = a / b;
+
+cheppu "Addition: " + sum;
+cheppu "Subtraction: " + diff;
+cheppu "Multiplication: " + product;
+cheppu "Division: " + quotient;
