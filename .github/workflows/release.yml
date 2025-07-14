@@ -35,7 +35,7 @@ jobs:
             archive: telugu-lang-linux-arm64.tar.gz
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Install Rust
       uses: dtolnay/rust-toolchain@stable
@@ -71,7 +71,7 @@ jobs:
         tar -czf "${{ matrix.archive }}" -C dist .
     
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.archive }}
         path: ${{ matrix.archive }}
@@ -84,10 +84,10 @@ jobs:
       contents: write
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Download artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         path: ./artifacts
     
@@ -133,7 +133,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Update formula with SHA256
       run: |
