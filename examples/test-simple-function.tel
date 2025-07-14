@@ -1,0 +1,32 @@
+// Test simple non-recursive function
+cheppu "Testing non-recursive function";
+
+pani multiplyByTwo(sankhya n) {
+    sankhya result = n * 2;
+    cheppu "Inside function: n = " + n + ", result = " + result;
+    tirigi_pampu result;
+}
+
+sankhya input = 5;
+sankhya output = multiplyByTwo(input);
+cheppu "Function returned: " + output;
+
+cheppu "";
+cheppu "Testing function that calls another function";
+
+pani addTen(sankhya n) {
+    sankhya result = n + 10;
+    tirigi_pampu result;
+}
+
+pani doubleAndAddTen(sankhya n) {
+    sankhya doubled = multiplyByTwo(n);
+    cheppu "Doubled value: " + doubled;
+    sankhya final = addTen(doubled);
+    cheppu "After adding 10: " + final;
+    tirigi_pampu final;
+}
+
+sankhya test = 7;
+sankhya result = doubleAndAddTen(test);
+cheppu "Final result: " + result;
