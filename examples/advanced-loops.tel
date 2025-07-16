@@ -1,0 +1,97 @@
+// Advanced For Loop Examples - Telugu Programming Language
+// Demonstrating the new enhanced for loop syntax
+
+cheppu "Telugu Language - Advanced For Loop Examples";
+cheppu "=============================================";
+
+// Example 1: Custom ranges with default increment
+cheppu "1. Custom range from 10 to 15:";
+prathi (i 10 nunchi 15 varaku) {
+    cheppu "Value: " + i;
+}
+
+cheppu "";
+
+// Example 2: Skip counting
+cheppu "2. Count by 5s from 0 to 25:";
+prathi (count 0 nunchi 25 varaku, 5 penchu) {
+    cheppu "Count: " + count;
+}
+
+cheppu "";
+
+// Example 3: Reverse counting
+cheppu "3. Countdown from 20 to 10:";
+prathi (countdown 20 nunchi 10 varaku, -1 penchu) {
+    cheppu "Countdown: " + countdown;
+}
+
+cheppu "";
+
+// Example 4: Mathematical patterns
+cheppu "4. Even numbers from 2 to 20:";
+prathi (even 2 nunchi 21 varaku, 2 penchu) {
+    cheppu "Even: " + even;
+}
+
+cheppu "";
+
+// Example 5: Fibonacci-like sequence (doubling)
+cheppu "5. Powers of 2 from 1 to 32:";
+prathi (power 1 nunchi 33 varaku, 2 penchu) {
+    cheppu "Power of 2: " + power;
+}
+
+cheppu "";
+
+// Example 6: Decimal increments
+cheppu "6. Decimal increments from 0.5 to 3:";
+prathi (decimal 0.5 nunchi 3 varaku, 0.5 penchu) {
+    cheppu "Decimal: " + decimal;
+}
+
+cheppu "";
+
+// Example 7: Large increments
+cheppu "7. Jump by 100s from 0 to 500:";
+prathi (big 0 nunchi 500 varaku, 100 penchu) {
+    cheppu "Big jump: " + big;
+}
+
+cheppu "";
+
+// Example 8: Nested loops with new syntax
+cheppu "8. Nested loops - Custom multiplication table:";
+prathi (row 2 nunchi 5 varaku) {
+    prathi (col 1 nunchi 4 varaku) {
+        sankhya result = row * col;
+        cheppu row + " x " + col + " = " + result;
+    }
+    cheppu "---";
+}
+
+cheppu "";
+
+// Example 9: Mixing old and new syntax
+cheppu "9. Old vs New syntax comparison:";
+cheppu "Old syntax (0 to 4):";
+prathi (old nunchi 5) {
+    cheppu "Old: " + old;
+}
+
+cheppu "New syntax (0 to 4):";
+prathi (new 0 nunchi 5 varaku) {
+    cheppu "New: " + new;
+}
+
+cheppu "";
+
+// Example 10: Pattern generation
+cheppu "10. Star pattern using enhanced loops:";
+prathi (line 1 nunchi 6 varaku) {
+    sankhya stars = line;
+    prathi (star 1 nunchi stars + 1 varaku) {
+        cheppu "*";
+    }
+    cheppu " (Line " + line + ")";
+}

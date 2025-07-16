@@ -58,3 +58,58 @@ prathi (x nunchi 10) {
         }
     }
 }
+
+cheppu "";
+cheppu "=== NEW ENHANCED FOR LOOP SYNTAX ===";
+cheppu "";
+
+cheppu "Count from 5 to 10 (default increment 1):";
+prathi (i 5 nunchi 10 varaku) {
+    cheppu "i = " + i;
+}
+
+cheppu "";
+
+cheppu "Count from 0 to 20 by 3s:";
+prathi (j 0 nunchi 20 varaku, 3 penchu) {
+    cheppu "j = " + j;
+}
+
+cheppu "";
+
+// Counting backwards
+cheppu "Count backwards from 10 to 5:";
+prathi (k 10 nunchi 5 varaku, -1 penchu) {
+    cheppu "k = " + k;
+}
+
+cheppu "";
+
+// Fibonacci-like pattern with custom increment
+cheppu "Powers of 2 from 1 to 64:";
+prathi (power 1 nunchi 65 varaku, 2 penchu) {
+    cheppu "Power: " + power;
+}
+
+cheppu "";
+
+// Enhanced for loop with calculations
+cheppu "Multiplication table of 7 (from 7 to 70):";
+prathi (multiple 7 nunchi 71 varaku, 7 penchu) {
+    sankhya factor = multiple / 7;
+    cheppu "7 x " + factor + " = " + multiple;
+}
+
+cheppu "";
+
+// Mixed old and new syntax
+cheppu "Comparison - Old vs New syntax:";
+cheppu "Old syntax (0 to 2):";
+prathi (old nunchi 3) {
+    cheppu "Old: " + old;
+}
+
+cheppu "New syntax (0 to 2):";
+prathi (new 0 nunchi 3 varaku) {
+    cheppu "New: " + new;
+}

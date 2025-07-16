@@ -1,0 +1,12 @@
+cheppu "Hello, World!";
+
+pani isEven(sankhya num){
+    ayite (num % 2 == 0) {
+        tirigi_pampu nijam;
+    } lekapothe {
+        tirigi_pampu abaddham;
+    }
+}
+
+cheppu "Is 4 an even number? " + isEven(4);
+cheppu "Is 5 an even number? " + isEven(5);

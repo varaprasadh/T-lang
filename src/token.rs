@@ -22,6 +22,7 @@ pub enum TokenType {
     Sontham,           // Self/this
     Techu,             // Import
     Nunchi,            // From
+    Penchu,            // Increment
     Bhagam,            // Module
     Prayatnam,         // Try
     Tappu,             // Catch/error

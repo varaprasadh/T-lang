@@ -116,19 +116,57 @@ impl Parser {
             _ => return Err("Expected variable name in for loop".to_string()),
         };
         
-        // Expect 'nunchi' (from) keyword
-        if !self.match_token(&TokenType::Nunchi) {
-            return Err("Expected 'nunchi' (from) in for loop".to_string());
+        // Check if this is a range-based for loop (with explicit start value)
+        if matches!(self.peek().token_type, TokenType::Sankhya(_)) || 
+           (matches!(self.peek().token_type, TokenType::Identifier(_)) && self.peek_ahead(1).token_type == TokenType::Nunchi) {
+            // This is the new syntax: prathi (i 2 nunchi 10 varaku, 1 penchu)
+            let start = self.parse_expression()?;
+            
+            // Expect 'nunchi' (from) keyword
+            if !self.match_token(&TokenType::Nunchi) {
+                return Err("Expected 'nunchi' (from) after start value".to_string());
+            }
+            
+            // Parse end expression
+            let end = self.parse_expression()?;
+            
+            // Expect 'varaku' (until) keyword
+            if !self.match_token(&TokenType::Varaku) {
+                return Err("Expected 'varaku' (until) after end value".to_string());
+            }
+            
+            // Check for optional increment
+            let increment = if self.match_token(&TokenType::Comma) {
+                let inc_value = self.parse_expression()?;
+                if !self.match_token(&TokenType::Penchu) {
+                    return Err("Expected 'penchu' (increment) after increment value".to_string());
+                }
+                Some(inc_value)
+            } else {
+                None
+            };
+            
+            self.consume(&TokenType::RightParen, "Expected ')' after for loop parameters")?;
+            
+            let body = Box::new(self.parse_statement()?);
+            
+            Ok(Stmt::PrathiRange { variable, start, end, increment, body })
+        } else {
+            // Old syntax: prathi (i nunchi 5)
+            // Expect 'nunchi' (from) keyword
+            if !self.match_token(&TokenType::Nunchi) {
+                return Err("Expected 'nunchi' (from) in for loop".to_string());
+            }
+            
+            // Parse iterable expression (range or collection)
+            let iterable = self.parse_expression()?;
+            
+            self.consume(&TokenType::RightParen, "Expected ')' after for loop range")?;
+            
+            let body = Box::new(self.parse_statement()?);
+            
+            Ok(Stmt::Prathi { variable, iterable, body })
         }
-        
-        // Parse iterable expression (range or collection)
-        let iterable = self.parse_expression()?;
-        
-        self.consume(&TokenType::RightParen, "Expected ')' after for loop range")?;
-        
-        let body = Box::new(self.parse_statement()?);
-        
-        Ok(Stmt::Prathi { variable, iterable, body })
     }
     
     fn parse_function_declaration(&mut self) -> Result<Stmt, String> {
@@ -507,6 +545,15 @@ impl Parser {
     
     fn peek(&self) -> &Token {
         &self.tokens[self.current]
+    }
+    
+    fn peek_ahead(&self, n: usize) -> &Token {
+        let index = self.current + n;
+        if index < self.tokens.len() {
+            &self.tokens[index]
+        } else {
+            &self.tokens[self.tokens.len() - 1] // Return EOF token
+        }
     }
     
     fn previous(&self) -> &Token {

@@ -77,6 +77,15 @@ pub enum Stmt {
         body: Box<Stmt>,
     },
     
+    // For loop with range and increment
+    PrathiRange {
+        variable: String,
+        start: Expr,
+        end: Expr,
+        increment: Option<Expr>,
+        body: Box<Stmt>,
+    },
+    
     // Block
     Block(Vec<Stmt>),
     

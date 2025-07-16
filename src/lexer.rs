@@ -33,6 +33,7 @@ impl Lexer {
         keywords.insert("sontham".to_string(), TokenType::Sontham);
         keywords.insert("techu".to_string(), TokenType::Techu);
         keywords.insert("nunchi".to_string(), TokenType::Nunchi);
+        keywords.insert("penchu".to_string(), TokenType::Penchu);
         keywords.insert("bhagam".to_string(), TokenType::Bhagam);
         keywords.insert("prayatnam".to_string(), TokenType::Prayatnam);
         keywords.insert("tappu".to_string(), TokenType::Tappu);

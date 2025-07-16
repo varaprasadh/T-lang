@@ -1,0 +1,27 @@
+// Demo of new for loop syntax with custom start, end, and increment
+
+cheppu "Example 1: Count from 2 to 10 with default increment (1)";
+prathi (i 2 nunchi 10 varaku) {
+    cheppu "i = " + i;
+}
+
+cheppu "\nExample 2: Count from 0 to 20 by 2s";
+prathi (j 0 nunchi 20 varaku, 2 penchu) {
+    cheppu "j = " + j;
+}
+
+cheppu "\nExample 3: Count backwards from 10 to 0";
+prathi (k 10 nunchi 0 varaku, -1 penchu) {
+    cheppu "k = " + k;
+}
+
+cheppu "\nExample 4: Multiplication table of 5";
+prathi (num 5 nunchi 55 varaku, 5 penchu) {
+    sankhya result = num / 5;
+    cheppu num + " = 5 x " + result;
+}
+
+cheppu "\nExample 5: Old syntax still works";
+prathi (m nunchi 5) {
+    cheppu "Old style: m = " + m;
+}

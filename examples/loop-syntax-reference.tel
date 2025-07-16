@@ -1,0 +1,61 @@
+// Telugu Language - For Loop Syntax Reference
+// ==========================================
+
+cheppu "Telugu For Loop Syntax Reference";
+cheppu "=================================";
+
+cheppu "1. OLD SYNTAX (backward compatible):";
+cheppu "   prathi (variable nunchi end_value) { ... }";
+cheppu "   - Starts from 0";
+cheppu "   - Goes up to (but not including) end_value";
+cheppu "   - Increments by 1";
+cheppu "";
+
+cheppu "2. NEW SYNTAX (enhanced):";
+cheppu "   prathi (variable start_value nunchi end_value varaku) { ... }";
+cheppu "   - Custom start and end values";
+cheppu "   - Default increment: 1";
+cheppu "";
+
+cheppu "3. NEW SYNTAX WITH CUSTOM INCREMENT:";
+cheppu "   prathi (variable start_value nunchi end_value varaku, increment_value penchu) { ... }";
+cheppu "   - Custom start, end, and increment values";
+cheppu "   - Supports positive and negative increments";
+cheppu "";
+
+cheppu "EXAMPLES:";
+cheppu "=========";
+
+cheppu "Old syntax - count 0 to 4:";
+prathi (i nunchi 5) {
+    cheppu "i = " + i;
+}
+
+cheppu "";
+
+cheppu "New syntax - count 5 to 8:";
+prathi (j 5 nunchi 9 varaku) {
+    cheppu "j = " + j;
+}
+
+cheppu "";
+
+cheppu "New syntax with increment - count 0 to 10 by 2s:";
+prathi (k 0 nunchi 11 varaku, 2 penchu) {
+    cheppu "k = " + k;
+}
+
+cheppu "";
+
+cheppu "Backward counting - 10 to 6:";
+prathi (m 10 nunchi 6 varaku, -1 penchu) {
+    cheppu "m = " + m;
+}
+
+cheppu "";
+cheppu "KEY TELUGU KEYWORDS:";
+cheppu "===================";
+cheppu "prathi  = for/each";
+cheppu "nunchi  = from";
+cheppu "varaku  = until";
+cheppu "penchu  = increment";

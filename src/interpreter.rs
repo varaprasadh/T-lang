@@ -160,6 +160,55 @@ impl Interpreter {
                 Ok(())
             }
             
+            Stmt::PrathiRange { variable, start, end, increment, body } => {
+                // Evaluate start, end, and increment expressions
+                let start_val = match self.evaluate_expression(start)? {
+                    Value::Sankhya(n) => n,
+                    _ => return Err(RuntimeError::TypeError("Start value must be a number".to_string())),
+                };
+                
+                let end_val = match self.evaluate_expression(end)? {
+                    Value::Sankhya(n) => n,
+                    _ => return Err(RuntimeError::TypeError("End value must be a number".to_string())),
+                };
+                
+                let inc_val = if let Some(inc_expr) = increment {
+                    match self.evaluate_expression(inc_expr)? {
+                        Value::Sankhya(n) => n,
+                        _ => return Err(RuntimeError::TypeError("Increment value must be a number".to_string())),
+                    }
+                } else {
+                    1.0 // Default increment
+                };
+                
+                // Check for invalid increment
+                if inc_val == 0.0 {
+                    return Err(RuntimeError::TypeError("Increment cannot be zero".to_string()));
+                }
+                
+                let mut i = start_val;
+                
+                // Handle both positive and negative increments
+                while (inc_val > 0.0 && i < end_val) || (inc_val < 0.0 && i > end_val) {
+                    // Set the loop variable
+                    self.set_variable(variable.clone(), Value::Sankhya(i));
+                    
+                    // Execute the body
+                    match self.execute_statement(body) {
+                        Err(RuntimeError::Break) => break,
+                        Err(RuntimeError::Continue) => {
+                            i += inc_val;
+                            continue;
+                        }
+                        Err(e) => return Err(e),
+                        Ok(_) => {}
+                    }
+                    
+                    i += inc_val;
+                }
+                Ok(())
+            }
+            
             Stmt::Block(statements) => {
                 self.locals.push(HashMap::new());
                 
@@ -221,7 +270,6 @@ impl Interpreter {
                 Ok(())
             }
             
-            _ => Ok(()),
         }
     }
     
