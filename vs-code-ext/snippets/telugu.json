@@ -1,0 +1,245 @@
+{
+    "Variable Declaration": {
+        "prefix": "sankhya",
+        "body": [
+            "sankhya ${1:variableName} = ${2:value};"
+        ],
+        "description": "Declare a number variable"
+    },
+    "Print Statement": {
+        "prefix": "cheppu",
+        "body": [
+            "cheppu ${1:\"message\"};"
+        ],
+        "description": "Print statement"
+    },
+    "If Statement": {
+        "prefix": "ayite",
+        "body": [
+            "ayite (${1:condition}) {",
+            "\t${2:// code block}",
+            "}"
+        ],
+        "description": "If conditional statement"
+    },
+    "If-Else Statement": {
+        "prefix": "ayite-lekapothe",
+        "body": [
+            "ayite (${1:condition}) {",
+            "\t${2:// if block}",
+            "} lekapothe {",
+            "\t${3:// else block}",
+            "}"
+        ],
+        "description": "If-else conditional statement"
+    },
+    "While Loop": {
+        "prefix": "varaku",
+        "body": [
+            "varaku (${1:condition}) {",
+            "\t${2:// loop body}",
+            "}"
+        ],
+        "description": "While loop"
+    },
+    "For Loop": {
+        "prefix": "prathi",
+        "body": [
+            "prathi (${1:variable} nunchi ${2:range}) {",
+            "\t${3:// loop body}",
+            "}"
+        ],
+        "description": "For loop"
+    },
+    "Function Declaration": {
+        "prefix": "pani",
+        "body": [
+            "pani ${1:functionName}(${2:sankhya parameter}) {",
+            "\t${3:// function body}",
+            "\ttirigi_pampu ${4:value};",
+            "}"
+        ],
+        "description": "Function declaration"
+    },
+    "Function Call": {
+        "prefix": "call",
+        "body": [
+            "sankhya ${1:result} = ${2:functionName}(${3:arguments});"
+        ],
+        "description": "Function call with result"
+    },
+    "Return Statement": {
+        "prefix": "tirigi_pampu",
+        "body": [
+            "tirigi_pampu ${1:value};"
+        ],
+        "description": "Return statement"
+    },
+    "Input Statement": {
+        "prefix": "adugu",
+        "body": [
+            "adugu ${1:\"prompt\"} ${2:variableName};"
+        ],
+        "description": "Input statement"
+    },
+    "Hello World": {
+        "prefix": "hello",
+        "body": [
+            "cheppu \"Namaste! Telugu programming language ki swagathamu!\";"
+        ],
+        "description": "Hello World in Telugu"
+    },
+    "Basic Program Template": {
+        "prefix": "template",
+        "body": [
+            "// Telugu Language Program",
+            "",
+            "sankhya ${1:variable} = ${2:10};",
+            "",
+            "cheppu \"${3:Hello World}\";"
+        ],
+        "description": "Basic program template"
+    },
+    "For Loop Simulation": {
+        "prefix": "for-loop",
+        "body": [
+            "sankhya ${1:i} = ${2:0};",
+            "varaku (${1:i} < ${3:10}) {",
+            "\t${4:// loop body}",
+            "\t${1:i} = ${1:i} + 1;",
+            "}"
+        ],
+        "description": "For loop simulation using while"
+    },
+    "For Loop Range": {
+        "prefix": "prathi-range",
+        "body": [
+            "prathi (${1:i} nunchi ${2:10}) {",
+            "\tcheppu \"Value: \" + ${1:i};",
+            "}"
+        ],
+        "description": "For loop with range"
+    },
+    "Nested For Loops": {
+        "prefix": "nested-for",
+        "body": [
+            "prathi (${1:i} nunchi ${2:3}) {",
+            "\tprathi (${3:j} nunchi ${4:3}) {",
+            "\t\tcheppu \"Row \" + ${1:i} + \" Col \" + ${3:j};",
+            "\t}",
+            "}"
+        ],
+        "description": "Nested for loops"
+    },
+    "Calculator Template": {
+        "prefix": "calc",
+        "body": [
+            "sankhya ${1:a} = ${2:10};",
+            "sankhya ${3:b} = ${4:5};",
+            "",
+            "cheppu \"Addition: \" + (${1:a} + ${3:b});",
+            "cheppu \"Subtraction: \" + (${1:a} - ${3:b});",
+            "cheppu \"Multiplication: \" + (${1:a} * ${3:b});",
+            "cheppu \"Division: \" + (${1:a} / ${3:b});"
+        ],
+        "description": "Basic calculator template"
+    },
+    "Star Pyramid": {
+        "prefix": "pyramid",
+        "body": [
+            "// Star pyramid pattern",
+            "prathi (row nunchi ${1:5}) {",
+            "\tsankhya width = ${2:9};",
+            "\tsankhya stars = 2 * row + 1;",
+            "\tsankhya spaces = (width - stars) / 2;",
+            "\tsankhya line = \"\";",
+            "\t",
+            "\t// Add leading spaces",
+            "\tprathi (sp nunchi spaces) {",
+            "\t\tline = line + \" \";",
+            "\t}",
+            "\t",
+            "\t// Add stars",
+            "\tprathi (star nunchi stars) {",
+            "\t\tline = line + \"*\";",
+            "\t}",
+            "\t",
+            "\tcheppu line;",
+            "}"
+        ],
+        "description": "Create a star pyramid pattern"
+    },
+    "Right Triangle": {
+        "prefix": "triangle",
+        "body": [
+            "// Right triangle pattern",
+            "prathi (row nunchi ${1:5}) {",
+            "\tsankhya stars = row + 1;",
+            "\tsankhya line = \"\";",
+            "\t",
+            "\tprathi (star nunchi stars) {",
+            "\t\tline = line + \"*\";",
+            "\t}",
+            "\t",
+            "\tcheppu line;",
+            "}"
+        ],
+        "description": "Create a right triangle pattern"
+    },
+    "Two Sum Algorithm": {
+        "prefix": "twosum",
+        "body": [
+            "// Two Sum Algorithm",
+            "sankhya target = ${1:9};",
+            "sankhya found = 0;",
+            "sankhya index1 = -1;",
+            "sankhya index2 = -1;",
+            "",
+            "// Brute force approach",
+            "prathi (i nunchi ${2:array_size}) {",
+            "\tprathi (j nunchi ${2:array_size}) {",
+            "\t\tayite (j > i) {",
+            "\t\t\t// Get values at positions i and j",
+            "\t\t\tsankhya val_i = ${3:/* get value at i */};",
+            "\t\t\tsankhya val_j = ${4:/* get value at j */};",
+            "\t\t\t",
+            "\t\t\tsankhya sum = val_i + val_j;",
+            "\t\t\tayite (sum == target) {",
+            "\t\t\t\tayite (found == 0) {",
+            "\t\t\t\t\tfound = 1;",
+            "\t\t\t\t\tindex1 = i;",
+            "\t\t\t\t\tindex2 = j;",
+            "\t\t\t\t\tcheppu \"Solution: indices \" + i + \" and \" + j;",
+            "\t\t\t\t}",
+            "\t\t\t}",
+            "\t\t}",
+            "\t}",
+            "}"
+        ],
+        "description": "Two Sum algorithm template"
+    },
+    "Linear Search": {
+        "prefix": "search",
+        "body": [
+            "// Linear Search Algorithm",
+            "sankhya target = ${1:value};",
+            "sankhya found = 0;",
+            "sankhya found_index = -1;",
+            "",
+            "prathi (i nunchi ${2:array_size}) {",
+            "\tsankhya current = ${3:/* get array[i] */};",
+            "\t",
+            "\tayite (current == target) {",
+            "\t\tfound = 1;",
+            "\t\tfound_index = i;",
+            "\t\tcheppu \"Found \" + target + \" at index \" + i;",
+            "\t}",
+            "}",
+            "",
+            "ayite (found == 0) {",
+            "\tcheppu \"Value not found\";",
+            "}"
+        ],
+        "description": "Linear search algorithm template"
+    }
+}

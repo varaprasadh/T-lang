@@ -1,0 +1,75 @@
+{
+    "name": "Telugu Dark",
+    "type": "dark",
+    "colors": {
+        "editor.background": "#1e1e1e",
+        "editor.foreground": "#d4d4d4"
+    },
+    "tokenColors": [
+        {
+            "scope": [
+                "keyword.control.telugu",
+                "keyword.declaration.telugu"
+            ],
+            "settings": {
+                "foreground": "#C586C0",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "keyword.other.telugu",
+            "settings": {
+                "foreground": "#4EC9B0",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "constant.language.telugu",
+            "settings": {
+                "foreground": "#569CD6",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "string.quoted.double.telugu",
+            "settings": {
+                "foreground": "#CE9178"
+            }
+        },
+        {
+            "scope": "constant.numeric.decimal.telugu",
+            "settings": {
+                "foreground": "#B5CEA8"
+            }
+        },
+        {
+            "scope": [
+                "keyword.operator.arithmetic.telugu",
+                "keyword.operator.comparison.telugu",
+                "keyword.operator.assignment.telugu"
+            ],
+            "settings": {
+                "foreground": "#D4D4D4"
+            }
+        },
+        {
+            "scope": "keyword.operator.logical.telugu",
+            "settings": {
+                "foreground": "#C586C0"
+            }
+        },
+        {
+            "scope": "comment.line.double-slash.telugu",
+            "settings": {
+                "foreground": "#6A9955",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "variable.other.telugu",
+            "settings": {
+                "foreground": "#9CDCFE"
+            }
+        }
+    ]
+}

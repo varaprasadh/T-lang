@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="58" fill="#FF6B35" stroke="#333" stroke-width="2"/>
+  
+  <!-- Telugu script-inspired design -->
+  <g transform="translate(32, 35)">
+    <!-- Simplified Telugu character inspired design -->
+    <path d="M20 10 Q30 5 40 10 Q45 15 40 25 L35 35 Q30 40 25 35 Q20 30 25 20 Z" 
+          fill="white" opacity="0.9"/>
+    <path d="M25 45 Q35 40 45 45 Q50 50 45 60 L40 70 Q35 75 30 70 Q25 65 30 55 Z" 
+          fill="white" opacity="0.9"/>
+    
+    <!-- Code brackets -->
+    <text x="5" y="25" font-family="monospace" font-size="16" fill="white" font-weight="bold">{</text>
+    <text x="55" y="25" font-family="monospace" font-size="16" fill="white" font-weight="bold">}</text>
+    <text x="5" y="65" font-family="monospace" font-size="16" fill="white" font-weight="bold">{</text>
+    <text x="55" y="65" font-family="monospace" font-size="16" fill="white" font-weight="bold">}</text>
+  </g>
+  
+  <!-- Bottom text -->
+  <text x="64" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">తెలుగు</text>
+</svg>

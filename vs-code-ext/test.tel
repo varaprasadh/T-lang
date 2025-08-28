@@ -1,0 +1,97 @@
+// Telugu Language Syntax Highlighting Test
+// This file tests all the syntax highlighting features
+
+// Variable declarations
+sankhya x = 10;
+sankhya y = 20.5;
+sankhya name = "Telugu Programming Language";
+
+// Print statements
+cheppu "Hello Telugu World!";
+cheppu "Number x = " + x;
+cheppu "Number y = " + y;
+
+// Conditional statements
+ayite (x < y) {
+    cheppu "x is smaller than y";
+} lekapothe {
+    ayite (x == y) {
+        cheppu "x equals y";
+    } lekapothe {
+        cheppu "x is greater than y";
+    }
+}
+
+// While loop
+sankhya count = 0;
+varaku (count < 5) {
+    cheppu "Count: " + count;
+    count = count + 1;
+    
+    ayite (count == 3) {
+        cheppu "Reached middle!";
+    }
+}
+
+// Arithmetic operations
+sankhya sum = x + y;
+sankhya diff = x - y;
+sankhya product = x * y;
+sankhya quotient = x / y;
+sankhya remainder = x % y;
+
+cheppu "Sum: " + sum;
+cheppu "Difference: " + diff;
+cheppu "Product: " + product;
+cheppu "Quotient: " + quotient;
+cheppu "Remainder: " + remainder;
+
+// Comparison operations
+sankhya a = 15;
+sankhya b = 10;
+
+ayite (a > b) {
+    cheppu "a is greater than b";
+}
+
+ayite (a >= b) {
+    cheppu "a is greater than or equal to b";
+}
+
+ayite (a != b) {
+    cheppu "a is not equal to b";
+}
+
+// Boolean values
+sankhya isTrue = nijam;
+sankhya isFalse = abaddham;
+sankhya isEmpty = sunya;
+
+cheppu "True value: " + isTrue;
+cheppu "False value: " + isFalse;
+cheppu "Null value: " + isEmpty;
+
+// Function declaration (syntax highlighting test)
+pani calculateArea(sankhya length, sankhya width) {
+    sankhya area = length * width;
+    tirigi_pampu area;
+}
+
+// Nested conditions and loops
+sankhya i = 0;
+varaku (i < 3) {
+    sankhya j = 0;
+    varaku (j < 3) {
+        cheppu "i=" + i + ", j=" + j;
+        j = j + 1;
+    }
+    i = i + 1;
+}
+
+/* 
+   Multi-line comment test
+   This should be highlighted as a comment
+   Telugu keywords in comments: sankhya cheppu ayite
+*/
+
+// End of test file

@@ -1,0 +1,25 @@
+cheppu "hello world";
+
+pani isEven(sankhya num){
+    ayite (num % 2 == 0) {
+        tirigi_pampu nijam;
+    } lekapothe {
+        tirigi_pampu abaddham;
+    }
+}
+
+cheppu "is 2 even: " + isEven(2);
+cheppu "is 3 even: " + isEven(3);
+
+
+pani printEventNumbers(sankhya N) {
+    prathi (i nunchi N) {
+        ayite (i%2 == 0) {
+            cheppu i + " is even";
+        }
+    }
+}
+
+
+
+printEventNumbers(10);

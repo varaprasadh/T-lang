@@ -1,0 +1,64 @@
+{
+    "name": "telugu-lang",
+    "displayName": "Telugu Programming Language",
+    "description": "Syntax highlighting and language support for Telugu programming language",
+    "version": "1.0.0",
+    "publisher": "telugu-lang-team",
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "telugu",
+        "programming",
+        "language",
+        "indian",
+        "syntax"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/your-org/telugu-lang"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "telugu",
+                "aliases": [
+                    "Telugu",
+                    "telugu"
+                ],
+                "extensions": [
+                    ".tel"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "telugu",
+                "scopeName": "source.telugu",
+                "path": "./syntaxes/telugu.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "telugu",
+                "path": "./snippets/telugu.json"
+            }
+        ],
+        "themes": [
+            {
+                "label": "Telugu Dark",
+                "uiTheme": "vs-dark",
+                "path": "./themes/telugu-dark.json"
+            }
+        ]
+    },
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#FF6B35",
+        "theme": "dark"
+    }
+}

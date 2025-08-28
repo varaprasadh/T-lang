@@ -1,0 +1,24 @@
+// Test for loop syntax highlighting
+cheppu "Testing for loops in Telugu";
+
+// Simple for loop
+prathi (i nunchi 5) {
+    cheppu "Number: " + i;
+}
+
+// Nested for loops
+prathi (row nunchi 3) {
+    prathi (col nunchi 3) {
+        sankhya result = row * col;
+        cheppu "Product: " + result;
+    }
+}
+
+// For loop with conditionals
+prathi (num nunchi 10) {
+    ayite (num % 2 == 0) {
+        cheppu num + " is even";
+    } lekapothe {
+        cheppu num + " is odd";
+    }
+}

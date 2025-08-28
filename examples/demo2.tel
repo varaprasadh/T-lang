@@ -10,3 +10,4 @@ pani isEven(sankhya num){
 
 cheppu "Is 4 an even number? " + isEven(4);
 cheppu "Is 5 an even number? " + isEven(5);
+cheppu "4+4: " + (4+4);
